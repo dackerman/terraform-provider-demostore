@@ -1,3 +1,3 @@
-provider "stainless-store" {
+provider "stlstore" {
 
 }
