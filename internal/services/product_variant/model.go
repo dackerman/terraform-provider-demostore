@@ -8,7 +8,7 @@ import (
 )
 
 type ProductVariantModel struct {
-	ID        types.String  `tfsdk:"id" json:"id,required"`
+	ID        types.String  `tfsdk:"id" json:"id,computed"`
 	ProductID types.String  `tfsdk:"product_id" path:"product_id,required"`
 	Name      types.String  `tfsdk:"name" json:"name,required"`
 	Price     types.Float64 `tfsdk:"price" json:"price,required"`
