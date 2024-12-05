@@ -16,7 +16,7 @@ terraform {
   required_providers {
     cloudflare = {
       source  = "dackerman/stlstore"
-      version = "~> 0.1.0-alpha.2"
+      version = "~> 0.1.0-alpha.3"
     }
   }
 }
