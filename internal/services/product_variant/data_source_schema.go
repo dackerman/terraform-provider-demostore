@@ -20,13 +20,16 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 			"product_id": schema.StringAttribute{
 				Computed: true,
 			},
+			"addl_price": schema.Float64Attribute{
+				Computed: true,
+			},
 			"id": schema.StringAttribute{
 				Computed: true,
 			},
-			"name": schema.StringAttribute{
+			"image_url": schema.StringAttribute{
 				Computed: true,
 			},
-			"price": schema.Float64Attribute{
+			"name": schema.StringAttribute{
 				Computed: true,
 			},
 		},
