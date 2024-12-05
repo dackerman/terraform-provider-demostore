@@ -22,7 +22,7 @@ func main() {
 	flag.Parse()
 
 	opts := providerserver.ServeOpts{
-		Address: "registry.terraform.io/dackerman/stainless-store",
+		Address: "registry.terraform.io/dackerman/stlstore",
 		Debug:   debug,
 	}
 

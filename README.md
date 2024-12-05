@@ -2,7 +2,7 @@
 
 The Stainless Store Terraform provider
 
-The [Stainless Store Terraform provider](https://registry.terraform.io/providers/dackerman/stainless-store/latest/docs) provides convenient access to
+The [Stainless Store Terraform provider](https://registry.terraform.io/providers/dackerman/stlstore/latest/docs) provides convenient access to
 [the Stainless Store REST API](https://docs.dackerman-store.com) from Terraform.
 
 It is generated with [Stainless](https://www.stainlessapi.com/).
@@ -15,8 +15,8 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 terraform {
   required_providers {
     cloudflare = {
-      source  = "dackerman/stainless-store"
-      version = "~> 0.1.0-alpha.1"
+      source  = "dackerman/stlstore"
+      version = "~> 0.1.0-alpha.2"
     }
   }
 }
