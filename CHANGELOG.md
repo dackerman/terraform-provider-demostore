@@ -1,0 +1,17 @@
+# Changelog
+
+## 0.1.0-alpha.1 (2024-12-05)
+
+Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/dackerman/terraform-provider-demostore/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
+
+### Features
+
+* **api:** update via SDK Studio ([#3](https://github.com/dackerman/terraform-provider-demostore/issues/3)) ([49eefc3](https://github.com/dackerman/terraform-provider-demostore/commit/49eefc3861f3b1fe5ef835b11c4c3fef158dd102))
+* **api:** update via SDK Studio ([#4](https://github.com/dackerman/terraform-provider-demostore/issues/4)) ([ba9b5a9](https://github.com/dackerman/terraform-provider-demostore/commit/ba9b5a9bebbc525beabd145284558ee5a3d9aea0))
+
+
+### Chores
+
+* go live ([61407b1](https://github.com/dackerman/terraform-provider-demostore/commit/61407b15e9169a58ed8d14e28d36afb753e2a55a))
+* update SDK settings ([#1](https://github.com/dackerman/terraform-provider-demostore/issues/1)) ([4e5cfc6](https://github.com/dackerman/terraform-provider-demostore/commit/4e5cfc650e59a2679c10c2c5fdeff86beb749918))
+* update SDK settings ([#2](https://github.com/dackerman/terraform-provider-demostore/issues/2)) ([32c83bc](https://github.com/dackerman/terraform-provider-demostore/commit/32c83bcd90fd265b1cb1a2c64a3595ba2ef3e1e8))
