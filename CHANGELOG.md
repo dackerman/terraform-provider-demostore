@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.2 (2024-12-05)
+
+Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+### Chores
+
+* **internal:** version bump ([#6](https://github.com/dackerman/terraform-provider-demostore/issues/6)) ([0bc85fb](https://github.com/dackerman/terraform-provider-demostore/commit/0bc85fb3be6d03a1b6cb7e0622f62bca6f0dcecd))
+
 ## 0.1.0-alpha.1 (2024-12-05)
 
 Full Changelog: [v0.0.1-alpha.0...v0.1.0-alpha.1](https://github.com/dackerman/terraform-provider-demostore/compare/v0.0.1-alpha.0...v0.1.0-alpha.1)
