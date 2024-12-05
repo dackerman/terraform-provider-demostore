@@ -8,11 +8,11 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/dackerman/demostore-go"
+	"github.com/dackerman/demostore-go/option"
 	"github.com/dackerman/terraform-provider-demostore/internal/apijson"
 	"github.com/dackerman/terraform-provider-demostore/internal/logging"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
-	"github.com/stainless-sdks/dackerman-store-go"
-	"github.com/stainless-sdks/dackerman-store-go/option"
 )
 
 type ProductDataSource struct {
