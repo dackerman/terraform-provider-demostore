@@ -16,23 +16,23 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-var _ provider.ProviderWithConfigValidators = (*StainlessStoreProvider)(nil)
+var _ provider.ProviderWithConfigValidators = (*StlstoreProvider)(nil)
 
-// StainlessStoreProvider defines the provider implementation.
-type StainlessStoreProvider struct {
+// StlstoreProvider defines the provider implementation.
+type StlstoreProvider struct {
 	// version is set to the provider version on release, "dev" when the
 	// provider is built and ran locally, and "test" when running acceptance
 	// testing.
 	version string
 }
 
-// StainlessStoreProviderModel describes the provider data model.
-type StainlessStoreProviderModel struct {
+// StlstoreProviderModel describes the provider data model.
+type StlstoreProviderModel struct {
 	BaseURL types.String `tfsdk:"base_url" json:"base_url,optional"`
 }
 
-func (p *StainlessStoreProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
-	resp.TypeName = "stainless-store"
+func (p *StlstoreProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
+	resp.TypeName = "stlstore"
 	resp.Version = p.version
 }
 
@@ -47,15 +47,15 @@ func ProviderSchema(ctx context.Context) schema.Schema {
 	}
 }
 
-func (p *StainlessStoreProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
+func (p *StlstoreProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
 	resp.Schema = ProviderSchema(ctx)
 }
 
-func (p *StainlessStoreProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
+func (p *StlstoreProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
 
 	// TODO(terraform): apiKey := os.Getenv("API_KEY")
 
-	var data StainlessStoreProviderModel
+	var data StlstoreProviderModel
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
 
@@ -73,18 +73,18 @@ func (p *StainlessStoreProvider) Configure(ctx context.Context, req provider.Con
 	resp.ResourceData = client
 }
 
-func (p *StainlessStoreProvider) ConfigValidators(_ context.Context) []provider.ConfigValidator {
+func (p *StlstoreProvider) ConfigValidators(_ context.Context) []provider.ConfigValidator {
 	return []provider.ConfigValidator{}
 }
 
-func (p *StainlessStoreProvider) Resources(ctx context.Context) []func() resource.Resource {
+func (p *StlstoreProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
 		product.NewResource,
 		product_variant.NewResource,
 	}
 }
 
-func (p *StainlessStoreProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
+func (p *StlstoreProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		product.NewProductDataSource,
 		product_variant.NewProductVariantDataSource,
@@ -93,7 +93,7 @@ func (p *StainlessStoreProvider) DataSources(ctx context.Context) []func() datas
 
 func NewProvider(version string) func() provider.Provider {
 	return func() provider.Provider {
-		return &StainlessStoreProvider{
+		return &StlstoreProvider{
 			version: version,
 		}
 	}
