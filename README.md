@@ -16,7 +16,7 @@ terraform {
   required_providers {
     cloudflare = {
       source  = "dackerman/stainless-store"
-      version = "~> 0.0.1-alpha.0"
+      version = "~> 0.1.0-alpha.1"
     }
   }
 }
