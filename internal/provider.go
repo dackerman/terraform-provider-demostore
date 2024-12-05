@@ -5,6 +5,8 @@ package internal
 import (
 	"context"
 
+	"github.com/dackerman/demostore-go"
+	"github.com/dackerman/demostore-go/option"
 	"github.com/dackerman/terraform-provider-demostore/internal/services/product"
 	"github.com/dackerman/terraform-provider-demostore/internal/services/product_variant"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
@@ -12,8 +14,6 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/types"
-	"github.com/stainless-sdks/dackerman-store-go"
-	"github.com/stainless-sdks/dackerman-store-go/option"
 )
 
 var _ provider.ProviderWithConfigValidators = (*StainlessStoreProvider)(nil)
