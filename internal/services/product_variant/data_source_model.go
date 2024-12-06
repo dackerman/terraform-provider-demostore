@@ -7,8 +7,8 @@ import (
 )
 
 type ProductVariantDataSourceModel struct {
-	ProductID types.Int64   `tfsdk:"product_id" path:"product_id,computed"`
-	VariantID types.Int64   `tfsdk:"variant_id" path:"variant_id,computed"`
+	ProductID types.String  `tfsdk:"product_id" path:"product_id,computed"`
+	VariantID types.String  `tfsdk:"variant_id" path:"variant_id,computed"`
 	AddlPrice types.Float64 `tfsdk:"addl_price" json:"addl_price,computed"`
 	ImageURL  types.String  `tfsdk:"image_url" json:"image_url,computed"`
 	Name      types.String  `tfsdk:"name" json:"name,computed"`

@@ -116,7 +116,7 @@ func (r *ProductResource) Update(ctx context.Context, req resource.UpdateRequest
 	res := new(http.Response)
 	_, err = r.client.Products.Update(
 		ctx,
-		data.ProductID.ValueInt64(),
+		data.ProductID.ValueString(),
 		dackermanstore.ProductUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
@@ -149,7 +149,7 @@ func (r *ProductResource) Read(ctx context.Context, req resource.ReadRequest, re
 	res := new(http.Response)
 	_, err := r.client.Products.Get(
 		ctx,
-		data.ProductID.ValueInt64(),
+		data.ProductID.ValueString(),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
@@ -179,7 +179,7 @@ func (r *ProductResource) Delete(ctx context.Context, req resource.DeleteRequest
 
 	_, err := r.client.Products.Delete(
 		ctx,
-		data.ProductID.ValueInt64(),
+		data.ProductID.ValueString(),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
@@ -194,7 +194,7 @@ func (r *ProductResource) Delete(ctx context.Context, req resource.DeleteRequest
 func (r *ProductResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
 	var data *ProductModel = new(ProductModel)
 
-	path := int64(0)
+	path := ""
 	diags := importpath.ParseImportID(
 		req.ID,
 		"<product_id>",
@@ -205,7 +205,7 @@ func (r *ProductResource) ImportState(ctx context.Context, req resource.ImportSt
 		return
 	}
 
-	data.ProductID = types.Int64Value(path)
+	data.ProductID = types.StringValue(path)
 
 	res := new(http.Response)
 	_, err := r.client.Products.Get(
