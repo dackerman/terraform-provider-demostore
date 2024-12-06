@@ -44,3 +44,18 @@ jobs:
 
       - name: Run tests
         run: ./scripts/test
+    
+  check_migrate:
+    name: check_migrate
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: ./go.mod
+
+      - name: Check Migration
+        run: ./scripts/check_migration
