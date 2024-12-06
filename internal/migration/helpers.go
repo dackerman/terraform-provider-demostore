@@ -16,9 +16,9 @@ import (
 
 var AllMigrations = map[string]map[string]SchemaConversion{}
 
-func RegisterMigration(pkg string, conversions map[string]SchemaConversion) bool {
+func RegisterMigration(pkg string, conversions map[string]SchemaConversion) map[string]SchemaConversion {
 	AllMigrations[pkg] = conversions
-	return true
+	return conversions
 }
 
 type SchemaConversion interface {
