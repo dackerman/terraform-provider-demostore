@@ -12,7 +12,7 @@ import (
 var _ resource.ResourceWithUpgradeState = (*ProductVariantResource)(nil)
 
 var conversions = migration.RegisterMigration("stlstore_product_variant", map[string]migration.SchemaConversion{
-	// "price":      migration.SkipConversion{},
+	"price": migration.SkipConversion{},
 	// "addl_price": migration.RenameProperty{NewName: "price"},
 })
 
