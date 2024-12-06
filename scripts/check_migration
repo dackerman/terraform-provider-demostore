@@ -9,4 +9,6 @@ pushd scripts
 terraform providers schema -json > ../upgrading/after.json
 popd
 
+cat ../upgrading/after.json
+
 go run main.go -upgrade
