@@ -5,13 +5,10 @@ package product_variant
 import (
 	"context"
 
-	"github.com/dackerman/terraform-provider-demostore/internal/customvalidator"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema"
-	"github.com/hashicorp/terraform-plugin-framework/resource/schema/int64planmodifier"
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/planmodifier"
-	"github.com/hashicorp/terraform-plugin-framework/schema/validator"
-	"github.com/hashicorp/terraform-plugin-framework/types/basetypes"
+	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
 var _ resource.ResourceWithConfigValidators = (*ProductVariantResource)(nil)
@@ -19,18 +16,16 @@ var _ resource.ResourceWithConfigValidators = (*ProductVariantResource)(nil)
 func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
-			"id": schema.Int64Attribute{
+			"id": schema.StringAttribute{
 				Computed: true,
 			},
-			"variant_id": schema.Int64Attribute{
+			"variant_id": schema.StringAttribute{
 				Computed:      true,
-				PlanModifiers: []planmodifier.Int64{int64planmodifier.UseStateForUnknown()},
+				PlanModifiers: []planmodifier.String{stringplanmodifier.UseStateForUnknown()},
 			},
-			"product_id": schema.DynamicAttribute{
-				Required: true,
-				Validators: []validator.Dynamic{
-					customvalidator.AllowedSubtypes(basetypes.StringType{}, basetypes.Int64Type{}),
-				},
+			"product_id": schema.StringAttribute{
+				Required:      true,
+				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"addl_price": schema.Float64Attribute{
 				Required: true,

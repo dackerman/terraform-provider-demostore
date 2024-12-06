@@ -8,8 +8,8 @@ import (
 )
 
 type ProductModel struct {
-	ID          types.Int64   `tfsdk:"id" json:"-,computed"`
-	ProductID   types.Int64   `tfsdk:"product_id" json:"product_id,computed"`
+	ID          types.String  `tfsdk:"id" json:"-,computed"`
+	ProductID   types.String  `tfsdk:"product_id" json:"product_id,computed"`
 	Description types.String  `tfsdk:"description" json:"description,required"`
 	ImageURL    types.String  `tfsdk:"image_url" json:"image_url,required"`
 	Name        types.String  `tfsdk:"name" json:"name,required"`

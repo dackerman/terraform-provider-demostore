@@ -71,6 +71,7 @@ func (r *ProductVariantResource) Create(ctx context.Context, req resource.Create
 	res := new(http.Response)
 	_, err = r.client.Products.Variants.New(
 		ctx,
+		data.ProductID.ValueString(),
 		dackermanstore.ProductVariantNewParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
@@ -116,7 +117,8 @@ func (r *ProductVariantResource) Update(ctx context.Context, req resource.Update
 	res := new(http.Response)
 	_, err = r.client.Products.Variants.Update(
 		ctx,
-		data.VariantID.ValueInt64(),
+		data.ProductID.ValueString(),
+		data.VariantID.ValueString(),
 		dackermanstore.ProductVariantUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
@@ -149,7 +151,8 @@ func (r *ProductVariantResource) Read(ctx context.Context, req resource.ReadRequ
 	res := new(http.Response)
 	_, err := r.client.Products.Variants.Get(
 		ctx,
-		data.VariantID.ValueInt64(),
+		data.ProductID.ValueString(),
+		data.VariantID.ValueString(),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
@@ -179,7 +182,8 @@ func (r *ProductVariantResource) Delete(ctx context.Context, req resource.Delete
 
 	_, err := r.client.Products.Variants.Delete(
 		ctx,
-		data.VariantID.ValueInt64(),
+		data.ProductID.ValueString(),
+		data.VariantID.ValueString(),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
@@ -194,8 +198,8 @@ func (r *ProductVariantResource) Delete(ctx context.Context, req resource.Delete
 func (r *ProductVariantResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
 	var data *ProductVariantModel = new(ProductVariantModel)
 
-	path_product_id := (*Interface{})(nil)
-	path_variant_id := int64(0)
+	path_product_id := ""
+	path_variant_id := ""
 	diags := importpath.ParseImportID(
 		req.ID,
 		"<product_id>/<variant_id>",
@@ -208,7 +212,7 @@ func (r *ProductVariantResource) ImportState(ctx context.Context, req resource.I
 	}
 
 	data.ProductID = types.StringValue(path_product_id)
-	data.VariantID = types.Int64Value(path_variant_id)
+	data.VariantID = types.StringValue(path_variant_id)
 
 	res := new(http.Response)
 	_, err := r.client.Products.Variants.Get(
