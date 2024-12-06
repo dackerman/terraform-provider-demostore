@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2024-12-06)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** update via SDK Studio ([#13](https://github.com/dackerman/terraform-provider-demostore/issues/13)) ([aec80a0](https://github.com/dackerman/terraform-provider-demostore/commit/aec80a0cabff6494f2fb7471c135b2bb46fc46c2))
+* **api:** update via SDK Studio ([#14](https://github.com/dackerman/terraform-provider-demostore/issues/14)) ([8b189a7](https://github.com/dackerman/terraform-provider-demostore/commit/8b189a7f405a601ea8c23b71465606d00c0a1e2d))
+* **api:** update via SDK Studio ([#15](https://github.com/dackerman/terraform-provider-demostore/issues/15)) ([7ade39c](https://github.com/dackerman/terraform-provider-demostore/commit/7ade39ccc610bf90293c1845e8c465ec6484fe0c))
+
+
+### Chores
+
+* **internal:** version bump ([#11](https://github.com/dackerman/terraform-provider-demostore/issues/11)) ([23ec14e](https://github.com/dackerman/terraform-provider-demostore/commit/23ec14e48580e05c263c1a19d17601bf1dc16267))
+
 ## 0.1.0-alpha.3 (2024-12-05)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
