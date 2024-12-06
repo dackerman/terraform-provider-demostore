@@ -5,6 +5,8 @@ go mod tidy
 
 go build -o terraform-provider-stlstore
 
+echo "checking the migration..."
+
 pushd scripts
 terraform providers schema -json > ../upgrading/after.json
 popd
