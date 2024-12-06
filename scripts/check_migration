@@ -3,4 +3,10 @@ set -e
 
 go mod tidy
 
+go build -o terraform-provider-stlstore
+
+pushd scripts
+terraform providers schema -json > ../upgrading/after.json
+popd
+
 go run main.go -upgrade
