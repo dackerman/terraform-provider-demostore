@@ -57,5 +57,23 @@ jobs:
         with:
           go-version-file: ./go.mod
 
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: "1.5.0"
+
+      - name: Create Terraform CLI Config
+        run: |
+          cat << EOF > ${{ runner.temp }}/terraform.rc
+          provider_installation {
+            dev_overrides {
+              "dackerman/stlstore" = "${{ github.workspace }}"
+            }
+            direct {}
+          }
+          EOF
+
       - name: Check Migration
-        run: ./scripts/check_migration
+        env:
+          TF_CLI_CONFIG_FILE: ${{ runner.temp }}/terraform.rc
+        run: ./scripts/check_migration 
