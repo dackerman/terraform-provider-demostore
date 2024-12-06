@@ -27,13 +27,13 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required:      true,
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
-			"addl_price": schema.Float64Attribute{
-				Required: true,
-			},
 			"image_url": schema.StringAttribute{
 				Required: true,
 			},
 			"name": schema.StringAttribute{
+				Required: true,
+			},
+			"price": schema.Int64Attribute{
 				Required: true,
 			},
 		},
