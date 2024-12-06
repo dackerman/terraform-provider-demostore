@@ -8,9 +8,9 @@ import (
 )
 
 type ProductVariantModel struct {
-	ID        types.Int64   `tfsdk:"id" json:"-,computed"`
-	VariantID types.Int64   `tfsdk:"variant_id" json:"variant_id,computed"`
-	ProductID types.Dynamic `tfsdk:"product_id" path:"product_id,required"`
+	ID        types.String  `tfsdk:"id" json:"-,computed"`
+	VariantID types.String  `tfsdk:"variant_id" json:"variant_id,computed"`
+	ProductID types.String  `tfsdk:"product_id" path:"product_id,required"`
 	AddlPrice types.Float64 `tfsdk:"addl_price" json:"addl_price,required"`
 	ImageURL  types.String  `tfsdk:"image_url" json:"image_url,required"`
 	Name      types.String  `tfsdk:"name" json:"name,required"`

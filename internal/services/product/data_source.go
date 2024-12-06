@@ -60,7 +60,7 @@ func (d *ProductDataSource) Read(ctx context.Context, req datasource.ReadRequest
 	res := new(http.Response)
 	_, err := d.client.Products.Get(
 		ctx,
-		data.ProductID.ValueInt64(),
+		data.ProductID.ValueString(),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)

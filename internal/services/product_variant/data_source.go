@@ -60,8 +60,8 @@ func (d *ProductVariantDataSource) Read(ctx context.Context, req datasource.Read
 	res := new(http.Response)
 	_, err := d.client.Products.Variants.Get(
 		ctx,
-		data.ProductID.ValueInt64(),
-		data.VariantID.ValueInt64(),
+		data.ProductID.ValueString(),
+		data.VariantID.ValueString(),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
