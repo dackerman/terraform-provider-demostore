@@ -59,6 +59,9 @@ func checkUpgrade() {
 	}
 	newJson := string(newData)
 
+	fmt.Println("old", oldJson)
+	fmt.Println("new", newJson)
+
 	oldSchemas := gjson.Get(oldJson, `provider_schemas.*.resource_schemas`)
 	newSchemas := gjson.Get(newJson, `provider_schemas.*.resource_schemas`)
 
