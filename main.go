@@ -46,14 +46,16 @@ func main() {
 func checkUpgrade() {
 	fmt.Println("Checking for upgrades...!!")
 
-	oldData, err := os.ReadFile("upgrading/alpha4.json")
+	oldData, err := os.ReadFile("upgrading/before.json")
 	if err != nil {
-		panic(err)
+		fmt.Println("export the old terraform schema to upgrading/before.json and rerun.")
+		return
 	}
 	oldJson := string(oldData)
-	newData, err := os.ReadFile("upgrading/alpha5.json")
+	newData, err := os.ReadFile("upgrading/after.json")
 	if err != nil {
-		panic(err)
+		fmt.Println("export the current terraform schema to upgrading/after.json and rerun.")
+		return
 	}
 	newJson := string(newData)
 
