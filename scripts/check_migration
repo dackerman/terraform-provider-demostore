@@ -7,8 +7,9 @@ go build -o terraform-provider-stlstore
 
 echo "checking the migration..."
 
-# pushd scripts
-# terraform providers schema -json > ../upgrading/after.json
-# popd
+pushd scripts
+terraform providers schema -json > ../upgrading/other.json
+popd
+cat ./upgrading/other.json
 
 go run main.go -upgrade
