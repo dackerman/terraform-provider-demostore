@@ -10,7 +10,5 @@ terraform providers schema -json > ../upgrading/after.json
 popd
 
 cat ./upgrading/after.json
-which jq
-jq '.' ./upgrading/after.json
 
 go run main.go -upgrade
