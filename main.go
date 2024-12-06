@@ -49,18 +49,20 @@ func checkUpgrade() {
 	oldData, err := os.ReadFile("upgrading/before.json")
 	if err != nil {
 		fmt.Println("export the old terraform schema to upgrading/before.json and rerun.")
-		return
+		os.Exit(1)
 	}
 	oldJson := string(oldData)
 	newData, err := os.ReadFile("upgrading/after.json")
 	if err != nil {
 		fmt.Println("export the current terraform schema to upgrading/after.json and rerun.")
-		return
+		os.Exit(1)
 	}
 	newJson := string(newData)
 
 	oldSchemas := gjson.Get(oldJson, `provider_schemas.*.resource_schemas`)
 	newSchemas := gjson.Get(newJson, `provider_schemas.*.resource_schemas`)
+
+	hasDiffs := false
 
 	newSchemas.ForEach(func(key, value gjson.Result) bool {
 
@@ -81,6 +83,7 @@ func checkUpgrade() {
 			oldAttr := oldAttributes.Get(key.String())
 			if !oldAttr.Exists() && existing[key.String()] == nil {
 				notInOld = append(notInOld, key.String())
+				hasDiffs = true
 			}
 			return true
 		})
@@ -89,6 +92,7 @@ func checkUpgrade() {
 			newAttr := newAttributes.Get(key.String())
 			if !newAttr.Exists() && existing[key.String()] == nil {
 				notInNew = append(notInNew, key.String())
+				hasDiffs = true
 			}
 			return true
 		})
@@ -114,4 +118,8 @@ func checkUpgrade() {
 
 		return true
 	})
+
+	if hasDiffs {
+		os.Exit(1)
+	}
 }
