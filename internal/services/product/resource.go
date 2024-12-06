@@ -86,6 +86,7 @@ func (r *ProductResource) Create(ctx context.Context, req resource.CreateRequest
 		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
 	}
+	data.ID = data.ProductID
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
@@ -115,7 +116,7 @@ func (r *ProductResource) Update(ctx context.Context, req resource.UpdateRequest
 	res := new(http.Response)
 	_, err = r.client.Products.Update(
 		ctx,
-		data.ID.ValueString(),
+		data.ProductID.ValueString(),
 		dackermanstore.ProductUpdateParams{},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
@@ -131,6 +132,7 @@ func (r *ProductResource) Update(ctx context.Context, req resource.UpdateRequest
 		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
 	}
+	data.ID = data.ProductID
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
@@ -147,7 +149,7 @@ func (r *ProductResource) Read(ctx context.Context, req resource.ReadRequest, re
 	res := new(http.Response)
 	_, err := r.client.Products.Get(
 		ctx,
-		data.ID.ValueString(),
+		data.ProductID.ValueString(),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
@@ -161,6 +163,7 @@ func (r *ProductResource) Read(ctx context.Context, req resource.ReadRequest, re
 		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
 	}
+	data.ID = data.ProductID
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
@@ -176,13 +179,14 @@ func (r *ProductResource) Delete(ctx context.Context, req resource.DeleteRequest
 
 	_, err := r.client.Products.Delete(
 		ctx,
-		data.ID.ValueString(),
+		data.ProductID.ValueString(),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
 		resp.Diagnostics.AddError("failed to make http request", err.Error())
 		return
 	}
+	data.ID = data.ProductID
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
@@ -201,7 +205,7 @@ func (r *ProductResource) ImportState(ctx context.Context, req resource.ImportSt
 		return
 	}
 
-	data.ID = types.StringValue(path)
+	data.ProductID = types.StringValue(path)
 
 	res := new(http.Response)
 	_, err := r.client.Products.Get(
@@ -220,6 +224,7 @@ func (r *ProductResource) ImportState(ctx context.Context, req resource.ImportSt
 		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
 	}
+	data.ID = data.ProductID
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
