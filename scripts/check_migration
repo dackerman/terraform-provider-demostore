@@ -6,7 +6,7 @@ go mod tidy
 go build -o terraform-provider-stlstore
 
 pushd scripts
-terraform providers schema -json | jq > ../upgrading/after.json
+terraform providers schema -json > raw-schema.json && jq '.' raw-schema.json > ../upgrading/after.json
 popd
 
 cat ./upgrading/after.json
