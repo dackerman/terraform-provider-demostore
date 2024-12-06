@@ -32,7 +32,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"name": schema.StringAttribute{
 				Required: true,
 			},
-			"price": schema.Float64Attribute{
+			"price": schema.Int64Attribute{
 				Required: true,
 			},
 		},
