@@ -13,7 +13,7 @@ type ProductVariantModel struct {
 	ProductID types.String `tfsdk:"product_id" path:"product_id,required"`
 	ImageURL  types.String `tfsdk:"image_url" json:"image_url,required"`
 	Name      types.String `tfsdk:"name" json:"name,required"`
-	Price     types.Int64  `tfsdk:"price" json:"price,required"`
+	Price     types.Int64  `tfsdk:"price_two" json:"price,required"`
 }
 
 func (m ProductVariantModel) MarshalJSON() (data []byte, err error) {
