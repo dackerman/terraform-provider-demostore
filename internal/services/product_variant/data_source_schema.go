@@ -14,16 +14,13 @@ var _ datasource.DataSourceWithConfigValidators = (*ProductVariantDataSource)(ni
 func DataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
-			"variant_id": schema.StringAttribute{
-				Required: true,
+			"product_id": schema.Int64Attribute{
+				Computed: true,
 			},
-			"product_id": schema.StringAttribute{
+			"variant_id": schema.Int64Attribute{
 				Computed: true,
 			},
 			"addl_price": schema.Float64Attribute{
-				Computed: true,
-			},
-			"id": schema.StringAttribute{
 				Computed: true,
 			},
 			"image_url": schema.StringAttribute{
