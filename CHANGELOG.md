@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2024-12-06)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* add workflow ([24797d7](https://github.com/dackerman/terraform-provider-demostore/commit/24797d761b202cbc673158543eb2dffb126530b7))
+* **api:** update via SDK Studio ([#18](https://github.com/dackerman/terraform-provider-demostore/issues/18)) ([e0b5c07](https://github.com/dackerman/terraform-provider-demostore/commit/e0b5c078a51620cebc34abb8376e304a79dd02be))
+* better output ([ee54dd8](https://github.com/dackerman/terraform-provider-demostore/commit/ee54dd8f9644a8cebbbfebe8432cd27618bcc72e))
+* ci ([4694abe](https://github.com/dackerman/terraform-provider-demostore/commit/4694abecd6148e0f26ed9ff77c00782ba2a3b06b))
+* debug ([5c6f01d](https://github.com/dackerman/terraform-provider-demostore/commit/5c6f01d5be5f58fa32311630570f1d89b667d4c1))
+* debug ([7b2b38c](https://github.com/dackerman/terraform-provider-demostore/commit/7b2b38c06254cdb139999752b41ceb058bf1b2b8))
+* debug ([07c2a17](https://github.com/dackerman/terraform-provider-demostore/commit/07c2a17182e0dc656e8d0a1dc87db110796e25b6))
+* i give up ([8f8c5df](https://github.com/dackerman/terraform-provider-demostore/commit/8f8c5df10f9d13c27dfe7d29d25ea23bedb48807))
+* jq ([29a2fe8](https://github.com/dackerman/terraform-provider-demostore/commit/29a2fe8b4d3a0ac8961f88ab89a1d4e4dc1f126e))
+* script ([bf7efa8](https://github.com/dackerman/terraform-provider-demostore/commit/bf7efa88cfe691eb52aa58a7b924e2039dcf098d))
+* something else; ([efdba94](https://github.com/dackerman/terraform-provider-demostore/commit/efdba94ad33b353457795a0ca94cbf534f5d8f37))
+* v1 script ([50fc627](https://github.com/dackerman/terraform-provider-demostore/commit/50fc62740e04043003d6d46c048bbdc3450c3cc7))
+* wip ([1af4afb](https://github.com/dackerman/terraform-provider-demostore/commit/1af4afbee0ecfc6a263e23c6ab29c45c1167aa29))
+
+
+### Chores
+
+* **internal:** version bump ([#16](https://github.com/dackerman/terraform-provider-demostore/issues/16)) ([9048179](https://github.com/dackerman/terraform-provider-demostore/commit/9048179bcf8b3320a5cca0251e6abebe4f58bd97))
+
 ## 0.1.0-alpha.4 (2024-12-06)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
