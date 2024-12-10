@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2024-12-10)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* remove resource state upon 404 during refresh operation ([#24](https://github.com/dackerman/terraform-provider-demostore/issues/24)) ([9761ade](https://github.com/dackerman/terraform-provider-demostore/commit/9761ade6cf00c4d2814ab36b35f2b3b7e49f22f7))
+
+
+### Bug Fixes
+
+* **docs:** reference provider type name in example code block ([#26](https://github.com/dackerman/terraform-provider-demostore/issues/26)) ([f603598](https://github.com/dackerman/terraform-provider-demostore/commit/f603598cceb06aaf6f1baf5f923ff7be80adaf62))
+
 ## 0.1.0-alpha.5 (2024-12-06)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
