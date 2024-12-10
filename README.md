@@ -14,9 +14,9 @@ It is generated with [Stainless](https://www.stainlessapi.com/).
 ```
 terraform {
   required_providers {
-    cloudflare = {
+    stlstore = {
       source  = "dackerman/stlstore"
-      version = "~> 0.1.0-alpha.4"
+      version = "~> 0.1.0-alpha.5"
     }
   }
 }
