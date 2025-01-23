@@ -1,45 +1,48 @@
----
-# This workflow is triggered when a GitHub release is created.
-# It can also be run manually to re-publish to Sonatype in case it failed for some reason.
-# You can run this workflow by navigating to https://www.github.com/dackerman/terraform-provider-demostore/actions/workflows/publish-sonatype.yml
-name: Publish Release
-
-permissions:
-  contents: write
-
-concurrency:
-  group: publish
-
+name: Release
 on:
-  release:
-    types: [prereleased]
-
+  push:
+    tags:
+      - "v*"
 jobs:
-  publish:
+  goreleaser:
     runs-on: ubuntu-latest
-
     steps:
-      - uses: actions/checkout@v4
+      - name: Cleanup unused directories and tools
+        run: |
+          sudo rm -rf \
+            "$AGENT_TOOLSDIRECTORY" \
+            /opt/google/chrome \
+            /opt/microsoft/msedge \
+            /opt/microsoft/powershell \
+            /opt/pipx \
+            /usr/lib/mono \
+            /usr/local/julia* \
+            /usr/local/lib/android \
+            /usr/local/lib/node_modules \
+            /usr/local/share/chromium \
+            /usr/local/share/powershell \
+            /usr/share/dotnet \
+            /usr/share/swift
+          df -h /
+      - name: Checkout
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Set up Golang
+      - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version-file: ./go.mod
-
-      - name: Install GoReleaser
-        uses: goreleaser/goreleaser-action@v6
+          go-version-file: "go.mod"
+      - name: Import GPG key
+        id: import_gpg
+        uses: crazy-max/ghaction-import-gpg@v6
         with:
-          install-only: true
-
-      - name: Build and Publish
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v6.1.0
+        with:
+          version: latest
+          args: release --clean
         env:
-          GPG_SIGNING_KEY: ${{ secrets.STAINLESS_STORE_GPG_SIGNING_KEY || secrets.GPG_SIGNING_KEY }}
-          GPG_SIGNING_PASSWORD: ${{ secrets.STAINLESS_STORE_GPG_SIGNING_PASSWORD || secrets.GPG_SIGNING_PASSWORD }}
-          GH_TOKEN: ${{ github.token }}
-          GIT_REF: ${{ github.ref }}
-        run: |-
-          GIT_TAG="$(basename -- "$GIT_REF")"
-          export -- GIT_TAG
-          bash ./bin/publish-release
+          GPG_FINGERPRINT: ${{ steps.import_gpg.outputs.fingerprint }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
