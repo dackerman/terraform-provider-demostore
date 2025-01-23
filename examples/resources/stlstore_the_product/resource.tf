@@ -1,4 +1,4 @@
-resource "stlstore_product" "example_product" {
+resource "stlstore_the_product" "example_the_product" {
   description = "description"
   image_url = "image_url"
   name = "name"
