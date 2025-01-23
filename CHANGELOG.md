@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-01-23)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* chore(release): use correct gpg secret ([7e6dee3](https://github.com/dackerman/terraform-provider-demostore/commit/7e6dee334248117e688da4bc717bed039f8bb8d9))
+
 ## 0.1.0-alpha.6 (2025-01-23)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
