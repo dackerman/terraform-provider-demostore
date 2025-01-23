@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.8 (2025-01-23)
+
+Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
+
+### Features
+
+* fix(build): run go mod tidy ([cd6c426](https://github.com/dackerman/terraform-provider-demostore/commit/cd6c42659d401094f77fbadf84942e9dd75955fb))
+
 ## 0.1.0-alpha.7 (2025-01-23)
 
 Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
