@@ -1,3 +1,3 @@
-provider "stlstore" {
+provider "demostore" {
 
 }
