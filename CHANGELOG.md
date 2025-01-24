@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.1 (2025-01-24)
+
+Full Changelog: [v0.2.0...v0.2.1](https://github.com/dackerman/terraform-provider-demostore/compare/v0.2.0...v0.2.1)
+
+### Features
+
+* chore(release): fix deprecation and make draft releases ([9b09070](https://github.com/dackerman/terraform-provider-demostore/commit/9b09070dddee8442f0eedfd26ddf24cadd9db895))
+
+
+### Chores
+
+* **internal:** version bump ([#74](https://github.com/dackerman/terraform-provider-demostore/issues/74)) ([4947f9a](https://github.com/dackerman/terraform-provider-demostore/commit/4947f9ae40c35d804bcfdd15632a5f6c00889512))
+
 ## 0.2.0 (2025-01-24)
 
 Full Changelog: [v0.1.0-rc3...v0.2.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-rc3...v0.2.0)
