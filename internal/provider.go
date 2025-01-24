@@ -16,23 +16,23 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-var _ provider.ProviderWithConfigValidators = (*StlstoreProvider)(nil)
+var _ provider.ProviderWithConfigValidators = (*DemostoreProvider)(nil)
 
-// StlstoreProvider defines the provider implementation.
-type StlstoreProvider struct {
+// DemostoreProvider defines the provider implementation.
+type DemostoreProvider struct {
 	// version is set to the provider version on release, "dev" when the
 	// provider is built and ran locally, and "test" when running acceptance
 	// testing.
 	version string
 }
 
-// StlstoreProviderModel describes the provider data model.
-type StlstoreProviderModel struct {
+// DemostoreProviderModel describes the provider data model.
+type DemostoreProviderModel struct {
 	BaseURL types.String `tfsdk:"base_url" json:"base_url,optional"`
 }
 
-func (p *StlstoreProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
-	resp.TypeName = "stlstore"
+func (p *DemostoreProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
+	resp.TypeName = "demostore"
 	resp.Version = p.version
 }
 
@@ -47,15 +47,15 @@ func ProviderSchema(ctx context.Context) schema.Schema {
 	}
 }
 
-func (p *StlstoreProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
+func (p *DemostoreProvider) Schema(ctx context.Context, req provider.SchemaRequest, resp *provider.SchemaResponse) {
 	resp.Schema = ProviderSchema(ctx)
 }
 
-func (p *StlstoreProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
+func (p *DemostoreProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
 
 	// TODO(terraform): apiKey := os.Getenv("API_KEY")
 
-	var data StlstoreProviderModel
+	var data DemostoreProviderModel
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
 
@@ -73,18 +73,18 @@ func (p *StlstoreProvider) Configure(ctx context.Context, req provider.Configure
 	resp.ResourceData = client
 }
 
-func (p *StlstoreProvider) ConfigValidators(_ context.Context) []provider.ConfigValidator {
+func (p *DemostoreProvider) ConfigValidators(_ context.Context) []provider.ConfigValidator {
 	return []provider.ConfigValidator{}
 }
 
-func (p *StlstoreProvider) Resources(ctx context.Context) []func() resource.Resource {
+func (p *DemostoreProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
 		the_product.NewResource,
 		product_variant.NewResource,
 	}
 }
 
-func (p *StlstoreProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
+func (p *DemostoreProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		the_product.NewTheProductDataSource,
 		product_variant.NewProductVariantDataSource,
@@ -93,7 +93,7 @@ func (p *StlstoreProvider) DataSources(ctx context.Context) []func() datasource.
 
 func NewProvider(version string) func() provider.Provider {
 	return func() provider.Provider {
-		return &StlstoreProvider{
+		return &DemostoreProvider{
 			version: version,
 		}
 	}
