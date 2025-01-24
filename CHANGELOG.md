@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-rc2 (2025-01-24)
+
+Full Changelog: [v0.1.0-rc1...v0.1.0-rc2](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-rc1...v0.1.0-rc2)
+
+### Features
+
+* chore(docs): run tfplugindocs ([c25a194](https://github.com/dackerman/terraform-provider-demostore/commit/c25a1949e638c469917bec819f2f0093eb719a8d))
+
+
+### Chores
+
+* **internal:** version bump ([#68](https://github.com/dackerman/terraform-provider-demostore/issues/68)) ([398e74b](https://github.com/dackerman/terraform-provider-demostore/commit/398e74b93b404c5be6d7c10f63aeeff575337d03))
+
 ## 0.1.0-rc1 (2025-01-24)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-rc1](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.9...v0.1.0-rc1)
