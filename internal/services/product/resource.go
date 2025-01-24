@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package the_product
+package product
 
 import (
 	"context"
@@ -18,24 +18,24 @@ import (
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.
-var _ resource.ResourceWithConfigure = (*TheProductResource)(nil)
-var _ resource.ResourceWithModifyPlan = (*TheProductResource)(nil)
-var _ resource.ResourceWithImportState = (*TheProductResource)(nil)
+var _ resource.ResourceWithConfigure = (*ProductResource)(nil)
+var _ resource.ResourceWithModifyPlan = (*ProductResource)(nil)
+var _ resource.ResourceWithImportState = (*ProductResource)(nil)
 
 func NewResource() resource.Resource {
-	return &TheProductResource{}
+	return &ProductResource{}
 }
 
-// TheProductResource defines the resource implementation.
-type TheProductResource struct {
+// ProductResource defines the resource implementation.
+type ProductResource struct {
 	client *dackermanstore.Client
 }
 
-func (r *TheProductResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_the_product"
+func (r *ProductResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_product"
 }
 
-func (r *TheProductResource) Configure(ctx context.Context, req resource.ConfigureRequest, resp *resource.ConfigureResponse) {
+func (r *ProductResource) Configure(ctx context.Context, req resource.ConfigureRequest, resp *resource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
@@ -54,8 +54,8 @@ func (r *TheProductResource) Configure(ctx context.Context, req resource.Configu
 	r.client = client
 }
 
-func (r *TheProductResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
-	var data *TheProductModel
+func (r *ProductResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
+	var data *ProductModel
 
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
 
@@ -91,8 +91,8 @@ func (r *TheProductResource) Create(ctx context.Context, req resource.CreateRequ
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *TheProductResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	var data *TheProductModel
+func (r *ProductResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
+	var data *ProductModel
 
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
 
@@ -100,7 +100,7 @@ func (r *TheProductResource) Update(ctx context.Context, req resource.UpdateRequ
 		return
 	}
 
-	var state *TheProductModel
+	var state *ProductModel
 
 	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
 
@@ -137,8 +137,8 @@ func (r *TheProductResource) Update(ctx context.Context, req resource.UpdateRequ
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *TheProductResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
-	var data *TheProductModel
+func (r *ProductResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
+	var data *ProductModel
 
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
 
@@ -173,8 +173,8 @@ func (r *TheProductResource) Read(ctx context.Context, req resource.ReadRequest,
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *TheProductResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
-	var data *TheProductModel
+func (r *ProductResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
+	var data *ProductModel
 
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
 
@@ -196,8 +196,8 @@ func (r *TheProductResource) Delete(ctx context.Context, req resource.DeleteRequ
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *TheProductResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	var data *TheProductModel = new(TheProductModel)
+func (r *ProductResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	var data *ProductModel = new(ProductModel)
 
 	path := ""
 	diags := importpath.ParseImportID(
@@ -234,6 +234,6 @@ func (r *TheProductResource) ImportState(ctx context.Context, req resource.Impor
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *TheProductResource) ModifyPlan(_ context.Context, _ resource.ModifyPlanRequest, _ *resource.ModifyPlanResponse) {
+func (r *ProductResource) ModifyPlan(_ context.Context, _ resource.ModifyPlanRequest, _ *resource.ModifyPlanResponse) {
 
 }
