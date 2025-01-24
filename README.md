@@ -16,7 +16,7 @@ terraform {
   required_providers {
     demostore = {
       source  = "dackerman/demostore"
-      version = "~> 0.1.0-rc3"
+      version = "~> 0.2.0"
     }
   }
 }
