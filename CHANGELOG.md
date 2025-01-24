@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.9 (2025-01-24)
+
+Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
+
+### Features
+
+* fix(build): add perms and concurrency to release action ([cf46265](https://github.com/dackerman/terraform-provider-demostore/commit/cf462650e2c88a2d3ae8c06a72628cde7d58bbda))
+
 ## 0.1.0-alpha.8 (2025-01-23)
 
 Full Changelog: [v0.1.0-alpha.7...v0.1.0-alpha.8](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.7...v0.1.0-alpha.8)
