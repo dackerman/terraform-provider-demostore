@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-rc1 (2025-01-24)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-rc1](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.9...v0.1.0-rc1)
+
+### Features
+
+* **api:** update via SDK Studio ([#67](https://github.com/dackerman/terraform-provider-demostore/issues/67)) ([f9fd240](https://github.com/dackerman/terraform-provider-demostore/commit/f9fd240014f0b07987d95ce49517a39cb5e9ec17))
+
+
+### Bug Fixes
+
+* **release:** don't try to announce to discord ([54f2313](https://github.com/dackerman/terraform-provider-demostore/commit/54f23139070abe7a074788cea0696a62d03d1f47))
+
 ## 0.1.0-alpha.9 (2025-01-24)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/dackerman/terraform-provider-demostore/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)

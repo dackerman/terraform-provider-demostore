@@ -32,7 +32,7 @@ func main() {
 	}
 
 	opts := providerserver.ServeOpts{
-		Address: "registry.terraform.io/dackerman/stlstore",
+		Address: "registry.terraform.io/dackerman/demostore",
 		Debug:   debug,
 	}
 
