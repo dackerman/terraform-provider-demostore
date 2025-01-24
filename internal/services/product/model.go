@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package the_product
+package product
 
 import (
 	"github.com/dackerman/terraform-provider-demostore/internal/apijson"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
 
-type TheProductModel struct {
+type ProductModel struct {
 	ID          types.String `tfsdk:"id" json:"-,computed"`
 	ProductID   types.String `tfsdk:"product_id" json:"product_id,computed"`
 	Description types.String `tfsdk:"description" json:"description,required"`
@@ -16,10 +16,10 @@ type TheProductModel struct {
 	Price       types.Int64  `tfsdk:"price" json:"price,required"`
 }
 
-func (m TheProductModel) MarshalJSON() (data []byte, err error) {
+func (m ProductModel) MarshalJSON() (data []byte, err error) {
 	return apijson.MarshalRoot(m)
 }
 
-func (m TheProductModel) MarshalJSONForUpdate(state TheProductModel) (data []byte, err error) {
+func (m ProductModel) MarshalJSONForUpdate(state ProductModel) (data []byte, err error) {
 	return apijson.MarshalForUpdate(m, state)
 }

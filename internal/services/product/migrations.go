@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package the_product
+package product
 
 import (
 	"context"
@@ -8,8 +8,8 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource"
 )
 
-var _ resource.ResourceWithUpgradeState = (*TheProductResource)(nil)
+var _ resource.ResourceWithUpgradeState = (*ProductResource)(nil)
 
-func (r *TheProductResource) UpgradeState(ctx context.Context) map[int64]resource.StateUpgrader {
+func (r *ProductResource) UpgradeState(ctx context.Context) map[int64]resource.StateUpgrader {
 	return map[int64]resource.StateUpgrader{}
 }
