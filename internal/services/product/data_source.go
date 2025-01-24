@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package the_product
+package product
 
 import (
 	"context"
@@ -15,21 +15,21 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 )
 
-type TheProductDataSource struct {
+type ProductDataSource struct {
 	client *dackermanstore.Client
 }
 
-var _ datasource.DataSourceWithConfigure = (*TheProductDataSource)(nil)
+var _ datasource.DataSourceWithConfigure = (*ProductDataSource)(nil)
 
-func NewTheProductDataSource() datasource.DataSource {
-	return &TheProductDataSource{}
+func NewProductDataSource() datasource.DataSource {
+	return &ProductDataSource{}
 }
 
-func (d *TheProductDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_the_product"
+func (d *ProductDataSource) Metadata(ctx context.Context, req datasource.MetadataRequest, resp *datasource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_product"
 }
 
-func (d *TheProductDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
+func (d *ProductDataSource) Configure(ctx context.Context, req datasource.ConfigureRequest, resp *datasource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
@@ -48,8 +48,8 @@ func (d *TheProductDataSource) Configure(ctx context.Context, req datasource.Con
 	d.client = client
 }
 
-func (d *TheProductDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
-	var data *TheProductDataSourceModel
+func (d *ProductDataSource) Read(ctx context.Context, req datasource.ReadRequest, resp *datasource.ReadResponse) {
+	var data *ProductDataSourceModel
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
 
