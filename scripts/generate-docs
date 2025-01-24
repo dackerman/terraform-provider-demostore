@@ -10,4 +10,4 @@ then
   go install github.com/hashicorp/terraform-plugin-docs/cmd/tfplugindocs
 fi
 
-tfplugindocs generate -rendered-provider-name "Stlstore" -provider-name="stlstore"
+tfplugindocs generate -rendered-provider-name "Demostore" -provider-name="demostore"
