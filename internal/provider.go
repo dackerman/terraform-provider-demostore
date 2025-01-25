@@ -53,8 +53,6 @@ func (p *DemostoreProvider) Schema(ctx context.Context, req provider.SchemaReque
 
 func (p *DemostoreProvider) Configure(ctx context.Context, req provider.ConfigureRequest, resp *provider.ConfigureResponse) {
 
-	// TODO(terraform): apiKey := os.Getenv("API_KEY")
-
 	var data DemostoreProviderModel
 
 	resp.Diagnostics.Append(req.Config.Get(ctx, &data)...)
