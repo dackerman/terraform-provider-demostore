@@ -35,6 +35,9 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 			"price": schema.Int64Attribute{
 				Required: true,
 			},
+			"long_description": schema.StringAttribute{
+				Optional: true,
+			},
 		},
 	}
 }
