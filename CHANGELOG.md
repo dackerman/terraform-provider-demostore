@@ -1,5 +1,27 @@
 # Changelog
 
+## 0.5.0 (2025-01-28)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **api:** update via SDK Studio ([#85](https://github.com/dackerman/terraform-provider-demostore/issues/85)) ([476a683](https://github.com/dackerman/terraform-provider-demostore/commit/476a68383b892c2e808a486ad3e8228bc713fd8a))
+* **api:** update via SDK Studio ([#86](https://github.com/dackerman/terraform-provider-demostore/issues/86)) ([7f0ecb2](https://github.com/dackerman/terraform-provider-demostore/commit/7f0ecb208ec639547f02bfb755c75013001ab6d1))
+* **api:** update via SDK Studio ([#87](https://github.com/dackerman/terraform-provider-demostore/issues/87)) ([9fb0957](https://github.com/dackerman/terraform-provider-demostore/commit/9fb0957ac700695b7c253ed841d39add8c0acbc5))
+
+
+### Bug Fixes
+
+* **build:** ensure scripts/generate-docs works regardless of PATH ([#89](https://github.com/dackerman/terraform-provider-demostore/issues/89)) ([05b3c7b](https://github.com/dackerman/terraform-provider-demostore/commit/05b3c7b955bbac30bb33dfa215811fd5d53e89d0))
+* **build:** improve release process ([#88](https://github.com/dackerman/terraform-provider-demostore/issues/88)) ([349d35a](https://github.com/dackerman/terraform-provider-demostore/commit/349d35aa5e152018909c64468fbe39441bd95531))
+
+
+### Chores
+
+* **internal:** version bump ([#81](https://github.com/dackerman/terraform-provider-demostore/issues/81)) ([e54758c](https://github.com/dackerman/terraform-provider-demostore/commit/e54758cb03184bf57300a116ffcfcfe9d1622327))
+* remove custom code ([36772b4](https://github.com/dackerman/terraform-provider-demostore/commit/36772b4204cc2a1339d9df98f605bc6468302d9a))
+
 ## 0.4.0 (2025-01-24)
 
 Full Changelog: [v0.3.0...v0.4.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.3.0...v0.4.0)

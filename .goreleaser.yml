@@ -1,3 +1,4 @@
+# yaml-language-server: schema=https://goreleaser.com/static/schema.json
 version: 2
 builds:
   - env:
@@ -47,7 +48,3 @@ release:
   extra_files:
     - glob: "terraform-registry-manifest.json"
       name_template: "{{ .ProjectName }}_{{ .Version }}_manifest.json"
-changelog:
-  disable: true
-snapshot:
-  version_template: "{{.ShortCommit}}-dev"
