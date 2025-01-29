@@ -26,7 +26,7 @@ resource "demostore_product_variant" "example_product_variant" {
 
 ### Required
 
-- `image_url` (String)
+- `image_url` (String) Url of the image to display for the variant
 - `name` (String)
 - `price` (Number)
 - `product_id` (String)
