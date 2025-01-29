@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.0 (2025-01-29)
+
+Full Changelog: [v0.5.0...v0.6.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.5.0...v0.6.0)
+
+### Features
+
+* **api:** update via SDK Studio ([#90](https://github.com/dackerman/terraform-provider-demostore/issues/90)) ([f882b38](https://github.com/dackerman/terraform-provider-demostore/commit/f882b38b7958bcc6b598419504bc6148c47b42ae))
+* **api:** update via SDK Studio ([#92](https://github.com/dackerman/terraform-provider-demostore/issues/92)) ([9b9bc2d](https://github.com/dackerman/terraform-provider-demostore/commit/9b9bc2dc71e2f293a62b7845449dfcba3d580ec4))
+* **api:** update via SDK Studio ([#93](https://github.com/dackerman/terraform-provider-demostore/issues/93)) ([6bebce0](https://github.com/dackerman/terraform-provider-demostore/commit/6bebce031c37c917f1c6fc8873d08e04de219933))
+* **api:** update via SDK Studio ([#94](https://github.com/dackerman/terraform-provider-demostore/issues/94)) ([9022f07](https://github.com/dackerman/terraform-provider-demostore/commit/9022f07045e84f893288a786a0ad26b826ced674))
+
 ## 0.5.0 (2025-01-28)
 
 Full Changelog: [v0.4.0...v0.5.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.4.0...v0.5.0)
