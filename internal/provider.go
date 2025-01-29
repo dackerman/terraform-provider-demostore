@@ -4,6 +4,7 @@ package internal
 
 import (
 	"context"
+	"os"
 
 	"github.com/dackerman/demostore-go"
 	"github.com/dackerman/demostore-go/option"
@@ -28,7 +29,8 @@ type DemostoreProvider struct {
 
 // DemostoreProviderModel describes the provider data model.
 type DemostoreProviderModel struct {
-	BaseURL types.String `tfsdk:"base_url" json:"base_url,optional"`
+	BaseURL   types.String `tfsdk:"base_url" json:"base_url,optional"`
+	AuthToken types.String `tfsdk:"auth_token" json:"auth_token,required"`
 }
 
 func (p *DemostoreProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
@@ -42,6 +44,9 @@ func ProviderSchema(ctx context.Context) schema.Schema {
 			"base_url": schema.StringAttribute{
 				Description: "Set the base url that the provider connects to. This can be used for testing in other environments.",
 				Optional:    true,
+			},
+			"auth_token": schema.StringAttribute{
+				Required: true,
 			},
 		},
 	}
@@ -61,6 +66,12 @@ func (p *DemostoreProvider) Configure(ctx context.Context, req provider.Configur
 
 	if !data.BaseURL.IsNull() {
 		opts = append(opts, option.WithBaseURL(data.BaseURL.ValueString()))
+	}
+	if o, ok := os.LookupEnv("DEMOSTORE_API_KEY"); ok {
+		opts = append(opts, option.WithAuthToken(o))
+	}
+	if !data.AuthToken.IsNull() {
+		opts = append(opts, option.WithAuthToken(data.AuthToken.ValueString()))
 	}
 
 	client := dackermanstore.NewClient(
