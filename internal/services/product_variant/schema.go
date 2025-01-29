@@ -28,7 +28,7 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				PlanModifiers: []planmodifier.String{stringplanmodifier.RequiresReplace()},
 			},
 			"image_url": schema.StringAttribute{
-				Description: "Url of the image to display for the variant",
+				Description: "URL of the image to display for the variant",
 				Required:    true,
 			},
 			"name": schema.StringAttribute{
