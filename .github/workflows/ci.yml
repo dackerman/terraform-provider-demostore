@@ -17,6 +17,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - uses: stainless-api/retrieve-github-access-token@v1
+        id: get_token
+        with:
+          repo: stainless-sdks/dackerman-store-go
+          stainless-api-key: ${{ secrets.STAINLESS_API_KEY }}
+
+      - name: Configure Git for private Go modules
+        run: git config --global url."https://${{ steps.get_token.outputs.github_access_token }}@github.com".insteadOf "https://github.com"
+      
+      - name: Set GOPRIVATE environment variable
+        run: echo "GOPRIVATE=github.com/stainless-sdks/dackerman-store-go" >> "$GITHUB_ENV"
+
       - name: Setup go
         uses: actions/setup-go@v5
         with:
