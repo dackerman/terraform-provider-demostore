@@ -8,12 +8,29 @@ on:
       - main
       - next
 
+env:
+  GOPRIVATE: github.com/stainless-sdks/dackerman-store-go
+
 jobs:
+  setup:
+    name: setup
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: stainless-api/retrieve-github-access-token@v1
+        id: get_token
+        with:
+          repo: stainless-sdks/dackerman-store-go
+          stainless-api-key: ${{ secrets.STAINLESS_API_KEY }}
+
+      - name: Configure Git for private Go modules
+        run: git config --global url."https://x-access-token:${{ steps.get_token.outputs.github_access_token }}@github.com/".insteadOf "https://github.com/"
+
   lint:
     name: lint
     runs-on: ubuntu-latest
-    
-
+    needs: setup
     steps:
       - uses: actions/checkout@v4
 
@@ -27,10 +44,11 @@ jobs:
 
       - name: Run lints
         run: ./scripts/lint
+
   test:
     name: test
     runs-on: ubuntu-latest
-
+    needs: setup
     steps:
       - uses: actions/checkout@v4
 

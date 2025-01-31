@@ -3,7 +3,6 @@ module github.com/dackerman/terraform-provider-demostore
 go 1.22.0
 
 require (
-	github.com/dackerman/demostore-go v0.1.0
 	github.com/davecgh/go-spew v1.1.1
 	github.com/hashicorp/terraform-plugin-docs v0.16.0
 	github.com/hashicorp/terraform-plugin-framework v1.13.0
