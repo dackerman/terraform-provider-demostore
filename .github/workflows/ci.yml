@@ -9,7 +9,7 @@ on:
       - next
 
 env:
-  GOPRIVATE: github.com/stainless-sdks/dackerman-store-go
+  GOPRIVATE: github.com/dackerman/demostore-go
 
 jobs:
   setup:
@@ -21,7 +21,7 @@ jobs:
       - uses: stainless-api/retrieve-github-access-token@v1
         id: get_token
         with:
-          repo: stainless-sdks/dackerman-store-go
+          repo: dackerman/demostore-go
           stainless-api-key: ${{ secrets.STAINLESS_API_KEY }}
 
       - name: Configure Git for private Go modules
