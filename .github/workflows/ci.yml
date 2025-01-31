@@ -12,21 +12,6 @@ env:
   GOPRIVATE: github.com/dackerman/demostore-go
 
 jobs:
-  setup:
-    name: setup
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: stainless-api/retrieve-github-access-token@v1
-        id: get_token
-        with:
-          repo: dackerman/demostore-go
-          stainless-api-key: ${{ secrets.STAINLESS_API_KEY }}
-
-      - name: Configure Git for private Go modules
-        run: git config --global url."https://x-access-token:${{ steps.get_token.outputs.github_access_token }}@github.com/".insteadOf "https://github.com/"
-
   lint:
     name: lint
     runs-on: ubuntu-latest
@@ -56,9 +41,17 @@ jobs:
   test:
     name: test
     runs-on: ubuntu-latest
-    needs: setup
     steps:
       - uses: actions/checkout@v4
+
+      - uses: stainless-api/retrieve-github-access-token@v1
+        id: get_token
+        with:
+          repo: dackerman/demostore-go
+          stainless-api-key: ${{ secrets.STAINLESS_API_KEY }}
+
+      - name: Configure Git for private Go modules
+        run: git config --global url."https://x-access-token:${{ steps.get_token.outputs.github_access_token }}@github.com/".insteadOf "https://github.com/"
 
       - name: Setup go
         uses: actions/setup-go@v5
