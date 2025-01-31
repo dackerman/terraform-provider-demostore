@@ -21,9 +21,6 @@ jobs:
         with:
           stainless-api-key: ${{ secrets.STAINLESS_API_KEY }}
 
-      - name: Bootstrap
-        run: ./scripts/bootstrap
-
       - name: Run lints
         run: ./scripts/lint
 
@@ -35,9 +32,6 @@ jobs:
       - uses: ./.github/actions/setup-go
         with:
           stainless-api-key: ${{ secrets.STAINLESS_API_KEY }}
-
-      - name: Bootstrap
-        run: ./scripts/bootstrap
 
       - name: Run tests
         run: ./scripts/test
