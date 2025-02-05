@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package product
+package products
 
 import (
 	"context"
@@ -11,7 +11,7 @@ import (
 	"github.com/hashicorp/terraform-plugin-framework/resource/schema/stringplanmodifier"
 )
 
-var _ resource.ResourceWithConfigValidators = (*ProductResource)(nil)
+var _ resource.ResourceWithConfigValidators = (*ProductsResource)(nil)
 
 func ResourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
@@ -42,10 +42,10 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 	}
 }
 
-func (r *ProductResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
+func (r *ProductsResource) Schema(ctx context.Context, req resource.SchemaRequest, resp *resource.SchemaResponse) {
 	resp.Schema = ResourceSchema(ctx)
 }
 
-func (r *ProductResource) ConfigValidators(_ context.Context) []resource.ConfigValidator {
+func (r *ProductsResource) ConfigValidators(_ context.Context) []resource.ConfigValidator {
 	return []resource.ConfigValidator{}
 }
