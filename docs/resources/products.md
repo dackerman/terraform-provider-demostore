@@ -34,7 +34,7 @@ resource "demostore_products" "example_products" {
 
 ### Optional
 
-- `long_description` (String)
+- `long_description` (String) An extra long description of the product
 
 ### Read-Only
 
