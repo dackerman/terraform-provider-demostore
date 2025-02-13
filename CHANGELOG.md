@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.7.0 (2025-02-13)
+
+Full Changelog: [v0.6.0...v0.7.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.6.0...v0.7.0)
+
+### Features
+
+* **api:** update via SDK Studio ([#102](https://github.com/dackerman/terraform-provider-demostore/issues/102)) ([894ebd7](https://github.com/dackerman/terraform-provider-demostore/commit/894ebd78f20328fd59929682057aa3996eef97a1))
+* **api:** update via SDK Studio ([#108](https://github.com/dackerman/terraform-provider-demostore/issues/108)) ([39df173](https://github.com/dackerman/terraform-provider-demostore/commit/39df1730e68792202501d6c95d766f00ce5cbc44))
+* **api:** update via SDK Studio ([#97](https://github.com/dackerman/terraform-provider-demostore/issues/97)) ([e285caf](https://github.com/dackerman/terraform-provider-demostore/commit/e285caf2f270034cd6eb0adb4a7222bebb78c88e))
+* **build:** allow for building against private go repos ([#103](https://github.com/dackerman/terraform-provider-demostore/issues/103)) ([130d281](https://github.com/dackerman/terraform-provider-demostore/commit/130d2818fcdf65247aa3b48ea748259fcb92be24))
+* **docs:** improve readme ([#95](https://github.com/dackerman/terraform-provider-demostore/issues/95)) ([6d8f2e5](https://github.com/dackerman/terraform-provider-demostore/commit/6d8f2e5313651a41cae146b70350aea358224aa7))
+
+
+### Bug Fixes
+
+* **api:** improve drift detection for resources ([#100](https://github.com/dackerman/terraform-provider-demostore/issues/100)) ([b715c1e](https://github.com/dackerman/terraform-provider-demostore/commit/b715c1e75274ccd3c27d9f2d390a6708316cccce))
+* do not call path.Base on ContentType ([#107](https://github.com/dackerman/terraform-provider-demostore/issues/107)) ([cc08546](https://github.com/dackerman/terraform-provider-demostore/commit/cc08546b23e2b129c42cc03d662d0f80d2976cb9))
+
+
+### Chores
+
+* **internal:** codegen related update ([#101](https://github.com/dackerman/terraform-provider-demostore/issues/101)) ([64fa90d](https://github.com/dackerman/terraform-provider-demostore/commit/64fa90dd779fd7a605e463eb3a92e262e0788c9f))
+* **internal:** codegen related update ([#104](https://github.com/dackerman/terraform-provider-demostore/issues/104)) ([bf4f448](https://github.com/dackerman/terraform-provider-demostore/commit/bf4f44857f9b901249dd2898e8f74b07f172aa9f))
+* **internal:** codegen related update ([#106](https://github.com/dackerman/terraform-provider-demostore/issues/106)) ([80bc166](https://github.com/dackerman/terraform-provider-demostore/commit/80bc16648b9abcaf31e40feb5eb748511df3c11b))
+* update SDK settings ([#98](https://github.com/dackerman/terraform-provider-demostore/issues/98)) ([3f6f78d](https://github.com/dackerman/terraform-provider-demostore/commit/3f6f78d82933ffe3f84fde7874da1245af681db3))
+
 ## 0.6.0 (2025-01-29)
 
 Full Changelog: [v0.5.0...v0.6.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.5.0...v0.6.0)

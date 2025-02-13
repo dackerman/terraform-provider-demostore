@@ -1,4 +1,4 @@
-resource "demostore_product" "example_product" {
+resource "demostore_products" "example_products" {
   description = "description"
   image_url = "image_url"
   name = "name"
