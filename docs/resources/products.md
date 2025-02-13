@@ -29,7 +29,7 @@ resource "demostore_products" "example_products" {
 
 - `description` (String)
 - `image_url` (String)
-- `name` (String)
+- `name` (String) The name of the product
 - `price` (Number)
 
 ### Optional
