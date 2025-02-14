@@ -3,4 +3,5 @@ resource "demostore_product_variant" "example_product_variant" {
   image_url = "image_url"
   name = "name"
   price = 0
+  type = "big"
 }
