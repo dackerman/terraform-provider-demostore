@@ -12,4 +12,5 @@ type ProductVariantDataSourceModel struct {
 	ImageURL  types.String `tfsdk:"image_url" json:"image_url,computed"`
 	Name      types.String `tfsdk:"name" json:"name,computed"`
 	Price     types.Int64  `tfsdk:"price" json:"price,computed"`
+	Type      types.String `tfsdk:"type" json:"type,computed"`
 }
