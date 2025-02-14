@@ -37,7 +37,8 @@ func ResourceSchema(ctx context.Context) schema.Schema {
 				Required: true,
 			},
 			"long_description": schema.StringAttribute{
-				Optional: true,
+				Description: "An extra long description of the product",
+				Optional:    true,
 			},
 		},
 	}

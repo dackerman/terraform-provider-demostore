@@ -28,4 +28,5 @@ data "demostore_product_variant" "example_product_variant" {
 - `name` (String)
 - `price` (Number)
 - `product_id` (String)
+- `type` (String)
 - `variant_id` (String)
