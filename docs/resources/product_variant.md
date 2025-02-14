@@ -18,6 +18,7 @@ resource "demostore_product_variant" "example_product_variant" {
   image_url = "image_url"
   name = "name"
   price = 0
+  type = "big"
 }
 ```
 
@@ -30,6 +31,10 @@ resource "demostore_product_variant" "example_product_variant" {
 - `name` (String) The name of the product
 - `price` (Number)
 - `product_id` (String)
+
+### Optional
+
+- `type` (String)
 
 ### Read-Only
 
