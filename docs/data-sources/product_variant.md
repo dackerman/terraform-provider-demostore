@@ -32,4 +32,3 @@ data "demostore_product_variant" "example_product_variant" {
 - `image_url` (String)
 - `name` (String)
 - `price` (Number)
-- `type` (String)
