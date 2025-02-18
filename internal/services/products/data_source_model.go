@@ -7,7 +7,7 @@ import (
 )
 
 type ProductsDataSourceModel struct {
-	ProductID   types.String `tfsdk:"product_id" path:"product_id,computed"`
+	ProductID   types.String `tfsdk:"product_id" path:"product_id,required"`
 	Description types.String `tfsdk:"description" json:"description,computed"`
 	ImageURL    types.String `tfsdk:"image_url" json:"image_url,computed"`
 	Name        types.String `tfsdk:"name" json:"name,computed"`
