@@ -1,5 +1,23 @@
 # Changelog
 
+## 0.9.0 (2025-02-19)
+
+Full Changelog: [v0.8.0...v0.9.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.8.0...v0.9.0)
+
+### Features
+
+* **api:** update via SDK Studio ([#114](https://github.com/dackerman/terraform-provider-demostore/issues/114)) ([5ae54ce](https://github.com/dackerman/terraform-provider-demostore/commit/5ae54ce9cac20dcddf4835fa32863562f6198fb4))
+
+
+### Bug Fixes
+
+* **datasource:** improve configurability of path parameters on data sources ([#112](https://github.com/dackerman/terraform-provider-demostore/issues/112)) ([7b819be](https://github.com/dackerman/terraform-provider-demostore/commit/7b819be1fed01cf686668b9017cc0b564e645d0f))
+
+
+### Chores
+
+* **internal:** codegen related update ([#115](https://github.com/dackerman/terraform-provider-demostore/issues/115)) ([356a687](https://github.com/dackerman/terraform-provider-demostore/commit/356a6872a4dd593e2fa70db0ebaeb3366f23d5d8))
+
 ## 0.8.0 (2025-02-14)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.7.0...v0.8.0)
