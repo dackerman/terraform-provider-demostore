@@ -63,6 +63,7 @@ func main() {
 	oldSchema := tfjson.ProviderSchemas{}
 	if err := json.Unmarshal(oldData, &oldSchema); err != nil {
 		fmt.Printf("Error unmarshaling previous version schema: %v\n", err)
+		fmt.Println(string(oldData))
 		os.Exit(1)
 	}
 
@@ -75,6 +76,7 @@ func main() {
 	newSchema := tfjson.ProviderSchemas{}
 	if err := json.Unmarshal(newData, &newSchema); err != nil {
 		fmt.Printf("Error unmarshaling current version schema: %v\n", err)
+		fmt.Println(string(newData))
 		os.Exit(1)
 	}
 
