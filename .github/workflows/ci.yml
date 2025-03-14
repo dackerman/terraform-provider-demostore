@@ -65,8 +65,7 @@ jobs:
         id: breaking_changes
         run: |
           OUTPUT_FILE="changes.json"
-          ./scripts/detect-breaking-changes
-          BREAKING_DETECTED=$?
+          ./scripts/detect-breaking-changes || BREAKING_DETECTED=$?
           if [ -n "$BREAKING_DETECTED" ]; then
             echo "BREAKING_CHANGES_DETECTED=true" >> $GITHUB_OUTPUT
           else
