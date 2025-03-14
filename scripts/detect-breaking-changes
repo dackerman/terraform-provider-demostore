@@ -10,7 +10,7 @@ TEMP_DIR=$(mktemp -d)
 # Delete temp dir after script exits
 trap "rm -rf $TEMP_DIR" EXIT
 
-pushd $TEMP_DIR
+pushd $TEMP_DIR > /dev/null
 
 # Minimal terraform provider configuration
 cat <<EOF > main.tf
@@ -29,8 +29,8 @@ EOF
 
 # Dump the latest major version of the terraform provider
 LAST_VERSION="$TEMP_DIR/last_version.json"
-terraform init
-terraform providers schema -json > "$LAST_VERSION"
+terraform init > /dev/null 2>&1
+terraform providers schema -json > "$LAST_VERSION" 2> /dev/null
 
 # Override the provider with the current directory
 TFRC="$TEMP_DIR/.terraform.tfrc"
@@ -46,8 +46,8 @@ EOF
 export TF_CLI_CONFIG_FILE="$TFRC"
 
 CURRENT_VERSION="$TEMP_DIR/current.json"
-terraform providers schema -json > "$CURRENT_VERSION"
+terraform providers schema -json > "$CURRENT_VERSION" 2> /dev/null
 
-popd
+popd > /dev/null
 
 go run "$PROJECT_DIR/cmd/breaking-changes/main.go" --previous-version="$LAST_VERSION" --current-version="$CURRENT_VERSION"
