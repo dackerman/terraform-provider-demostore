@@ -64,15 +64,16 @@ jobs:
         if: github.event_name == 'pull_request'
         id: breaking_changes
         run: |
-          OUTPUT_FILE="breaking_changes_output.json"
-          ./scripts/detect-breaking-changes > $OUTPUT_FILE || BREAKING_DETECTED=$?
+          OUTPUT_FILE="changes.json"
+          ./scripts/detect-breaking-changes
+          BREAKING_DETECTED=$?
           if [ -n "$BREAKING_DETECTED" ]; then
             echo "BREAKING_CHANGES_DETECTED=true" >> $GITHUB_OUTPUT
           else
             echo "BREAKING_CHANGES_DETECTED=false" >> $GITHUB_OUTPUT
           fi
           cat $OUTPUT_FILE
-          echo "BREAKING_CHANGES_JSON=$(cat $OUTPUT_FILE)" >> $GITHUB_OUTPUT
+          echo "BREAKING_CHANGES_JSON=\"$(cat $OUTPUT_FILE | jq -c)\"" >> $GITHUB_OUTPUT
 
       - name: Comment on PR
         if: github.event_name == 'pull_request'

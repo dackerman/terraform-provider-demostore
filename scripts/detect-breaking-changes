@@ -50,6 +50,10 @@ terraform providers schema -json > "$CURRENT_VERSION"
 
 popd > /dev/null
 
-cat "$CURRENT_VERSION"
+echo "latest released schema:"
 cat "$LAST_VERSION"
-go run "$PROJECT_DIR/cmd/breaking-changes/main.go" --previous-version="$LAST_VERSION" --current-version="$CURRENT_VERSION"
+
+echo "current schema:"
+cat "$CURRENT_VERSION"
+
+go run "$PROJECT_DIR/cmd/breaking-changes/main.go" --previous-version="$LAST_VERSION" --current-version="$CURRENT_VERSION" > changes.json
