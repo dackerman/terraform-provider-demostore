@@ -18,10 +18,19 @@ module.exports = async ({ github, context, core }) => {
       commentBody += '✅ **No breaking changes detected**\n\n';
     }
 
-    // Add raw JSON output
-    commentBody += '```json\n';
-    commentBody += rawJson;
-    commentBody += '\n```\n\n';
+    // Add raw JSON output with pretty formatting
+    try {
+      const parsedJson = JSON.parse(rawJson);
+      const prettyJson = JSON.stringify(parsedJson, null, 2);
+      commentBody += '```json\n';
+      commentBody += prettyJson;
+      commentBody += '\n```\n\n';
+    } catch (err) {
+      // Fallback to raw JSON if parsing fails
+      commentBody += '```json\n';
+      commentBody += rawJson;
+      commentBody += '\n```\n\n';
+    }
 
     commentBody += '---\n';
     commentBody += 'For more details, see the CI logs.';
