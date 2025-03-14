@@ -1,9 +1,53 @@
-#!/usr/bin/env bash
-
+#!/bin/bash
 set -e
 
-cd "$(dirname "$0")/.."
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_DIR="$(cd "${SCRIPT_DIR}/.." && pwd)"
 
-echo "==> Detecting breaking changes"
-git checkout "$1" -- 
-./scripts/lint
+# Create a temporary directory
+TEMP_DIR=$(mktemp -d)
+
+# Delete temp dir after script exits
+trap "rm -rf $TEMP_DIR" EXIT
+
+pushd $TEMP_DIR
+
+# Minimal terraform provider configuration
+cat <<EOF > main.tf
+terraform {
+  required_providers {
+    demostore = {
+      source  = "dackerman/demostore"
+      version = ">= 0.1.0"
+    }
+  }
+}
+
+provider "demostore" {
+}
+EOF
+
+# Dump the latest major version of the terraform provider
+LAST_VERSION="$TEMP_DIR/last_version.json"
+terraform init
+terraform providers schema -json > "$LAST_VERSION"
+
+# Override the provider with the current directory
+TFRC="$TEMP_DIR/.terraform.tfrc"
+cat << EOF > "$TFRC"
+provider_installation {
+  dev_overrides {
+    "dackerman/demostore" = "$PROJECT_DIR"
+  }
+  direct {}
+}
+EOF
+
+export TF_CLI_CONFIG_FILE="$TFRC"
+
+CURRENT_VERSION="$TEMP_DIR/current.json"
+terraform providers schema -json > "$CURRENT_VERSION"
+
+popd
+
+go run "$PROJECT_DIR/cmd/breaking-changes/main.go" --previous-version="$LAST_VERSION" --current-version="$CURRENT_VERSION"
