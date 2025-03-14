@@ -35,3 +35,50 @@ jobs:
 
       - name: Run tests
         run: ./scripts/test
+  
+  check_breaking_changes:
+    name: check_migrate
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup go
+        uses: actions/setup-go@v5
+        with:
+          go-version-file: ./go.mod
+
+      - name: Bootstrap
+        run: ./scripts/bootstrap
+
+      - name: Build
+        run: ./scripts/build
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: "1.5.0"
+
+       - name: Check For Breaking changes
+        if: github.event_name == 'pull_request'
+        id: breaking_changes
+        run: |
+          OUTPUT_FILE="breaking_changes_output.json"
+          ./scripts/detect-breaking-changes > $OUTPUT_FILE || BREAKING_DETECTED=$?
+          if [ -n "$BREAKING_DETECTED" ]; then
+            echo "BREAKING_CHANGES_DETECTED=true" >> $GITHUB_OUTPUT
+          else
+            echo "BREAKING_CHANGES_DETECTED=false" >> $GITHUB_OUTPUT
+          fi
+          cat $OUTPUT_FILE
+          echo "BREAKING_CHANGES_JSON=$(cat $OUTPUT_FILE | jq -c)" >> $GITHUB_OUTPUT
+
+      - name: Comment on PR
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: ./scripts/post-breaking-changes-comment.js
+        env:
+          BREAKING_CHANGES_DETECTED: ${{ steps.breaking_changes.outputs.BREAKING_CHANGES_DETECTED }}
+          BREAKING_CHANGES_JSON: ${{ steps.breaking_changes.outputs.BREAKING_CHANGES_JSON || '{}' }}
