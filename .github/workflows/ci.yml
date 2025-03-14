@@ -71,7 +71,7 @@ jobs:
             echo "BREAKING_CHANGES_DETECTED=false" >> $GITHUB_OUTPUT
           fi
           cat $OUTPUT_FILE
-          echo "BREAKING_CHANGES_JSON=$(cat $OUTPUT_FILE | jq -c)" >> $GITHUB_OUTPUT
+          echo "BREAKING_CHANGES_JSON=$(cat $OUTPUT_FILE)" >> $GITHUB_OUTPUT
 
       - name: Comment on PR
         if: github.event_name == 'pull_request'
