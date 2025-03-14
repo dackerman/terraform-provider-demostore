@@ -79,7 +79,9 @@ jobs:
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          script: ./scripts/post-breaking-changes-comment.js
+          script: |
+            const script = require('./scripts/post-breaking-changes-comment.js');
+            console.log(script({github, context, core}));
         env:
           BREAKING_CHANGES_DETECTED: ${{ steps.breaking_changes.outputs.BREAKING_CHANGES_DETECTED }}
           BREAKING_CHANGES_JSON: ${{ steps.breaking_changes.outputs.BREAKING_CHANGES_JSON || '{}' }}
