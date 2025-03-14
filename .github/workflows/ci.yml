@@ -59,7 +59,7 @@ jobs:
         with:
           terraform_version: "1.5.0"
 
-       - name: Check For Breaking changes
+      - name: Check For Breaking changes
         if: github.event_name == 'pull_request'
         id: breaking_changes
         run: |
