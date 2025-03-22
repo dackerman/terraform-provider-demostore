@@ -30,4 +30,4 @@ data "demostore_product" "example_product" {
 - `description` (String)
 - `image_url` (String)
 - `name` (String)
-- `price` (Number)
+- `price` (Number) Price.

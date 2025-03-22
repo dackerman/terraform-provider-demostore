@@ -27,7 +27,8 @@ func DataSourceSchema(ctx context.Context) schema.Schema {
 				Computed: true,
 			},
 			"price": schema.Int64Attribute{
-				Computed: true,
+				Description: "Price.",
+				Computed:    true,
 			},
 		},
 	}
