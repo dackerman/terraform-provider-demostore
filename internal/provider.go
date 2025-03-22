@@ -96,6 +96,7 @@ func (p *DemostoreProvider) Resources(ctx context.Context) []func() resource.Res
 func (p *DemostoreProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
 		product.NewProductDataSource,
+		product.NewProductsDataSource,
 		product_variant.NewProductVariantDataSource,
 	}
 }
