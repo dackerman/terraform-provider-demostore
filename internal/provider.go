@@ -11,6 +11,7 @@ import (
 	"github.com/dackerman/terraform-provider-demostore/internal/services/product"
 	"github.com/dackerman/terraform-provider-demostore/internal/services/product_variant"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
+	"github.com/hashicorp/terraform-plugin-framework/path"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
 	"github.com/hashicorp/terraform-plugin-framework/resource"
@@ -30,7 +31,7 @@ type DemostoreProvider struct {
 // DemostoreProviderModel describes the provider data model.
 type DemostoreProviderModel struct {
 	BaseURL   types.String `tfsdk:"base_url" json:"base_url,optional"`
-	AuthToken types.String `tfsdk:"auth_token" json:"auth_token,required"`
+	AuthToken types.String `tfsdk:"auth_token" json:"auth_token,optional"`
 }
 
 func (p *DemostoreProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
@@ -46,7 +47,7 @@ func ProviderSchema(ctx context.Context) schema.Schema {
 				Optional:    true,
 			},
 			"auth_token": schema.StringAttribute{
-				Required: true,
+				Optional: true,
 			},
 		},
 	}
@@ -64,14 +65,23 @@ func (p *DemostoreProvider) Configure(ctx context.Context, req provider.Configur
 
 	opts := []option.RequestOption{}
 
-	if !data.BaseURL.IsNull() {
+	if !data.BaseURL.IsNull() && !data.BaseURL.IsUnknown() {
 		opts = append(opts, option.WithBaseURL(data.BaseURL.ValueString()))
+	} else if o, ok := os.LookupEnv("STAINLESS_STORE_BASE_URL"); ok {
+		opts = append(opts, option.WithBaseURL(o))
 	}
-	if o, ok := os.LookupEnv("DEMOSTORE_API_KEY"); ok {
-		opts = append(opts, option.WithAuthToken(o))
-	}
-	if !data.AuthToken.IsNull() {
+
+	if !data.AuthToken.IsNull() && !data.AuthToken.IsUnknown() {
 		opts = append(opts, option.WithAuthToken(data.AuthToken.ValueString()))
+	} else if o, ok := os.LookupEnv("DEMOSTORE_API_KEY"); ok {
+		opts = append(opts, option.WithAuthToken(o))
+	} else {
+		resp.Diagnostics.AddAttributeError(
+			path.Root("auth_token"),
+			"Missing auth_token value",
+			"The auth_token field is required. Set it in provider configuration or via the \"DEMOSTORE_API_KEY\" environment variable.",
+		)
+		return
 	}
 
 	client := dackermanstore.NewClient(
