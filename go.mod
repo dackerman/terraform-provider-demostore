@@ -2,7 +2,7 @@ module github.com/dackerman/terraform-provider-demostore
 
 go 1.23.0
 
-toolchain go1.23.7
+toolchain go1.23.8
 
 require (
 	github.com/dackerman/demostore-go v0.3.0
