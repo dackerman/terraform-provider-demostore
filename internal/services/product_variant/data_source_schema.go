@@ -14,6 +14,9 @@ var _ datasource.DataSourceWithConfigValidators = (*ProductVariantDataSource)(ni
 func DataSourceSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
+			"org_id": schema.StringAttribute{
+				Required: true,
+			},
 			"product_id": schema.StringAttribute{
 				Required: true,
 			},

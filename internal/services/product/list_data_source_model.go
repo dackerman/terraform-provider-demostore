@@ -16,12 +16,17 @@ type ProductsDataListDataSourceEnvelope struct {
 }
 
 type ProductsDataSourceModel struct {
+	OrgID    types.String                                               `tfsdk:"org_id" path:"org_id,optional"`
 	MaxItems types.Int64                                                `tfsdk:"max_items"`
 	Items    customfield.NestedObjectList[ProductsItemsDataSourceModel] `tfsdk:"items"`
 }
 
 func (m *ProductsDataSourceModel) toListParams(_ context.Context) (params dackermanstore.ProductListParams, diags diag.Diagnostics) {
 	params = dackermanstore.ProductListParams{}
+
+	if !m.OrgID.IsNull() {
+		params.OrgID = dackermanstore.F(m.OrgID.ValueString())
+	}
 
 	return
 }

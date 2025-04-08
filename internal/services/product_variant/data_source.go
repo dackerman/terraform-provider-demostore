@@ -57,11 +57,18 @@ func (d *ProductVariantDataSource) Read(ctx context.Context, req datasource.Read
 		return
 	}
 
+	params, diags := data.toReadParams(ctx)
+	resp.Diagnostics.Append(diags...)
+	if resp.Diagnostics.HasError() {
+		return
+	}
+
 	res := new(http.Response)
 	_, err := d.client.Products.Variants.Get(
 		ctx,
 		data.ProductID.ValueString(),
 		data.VariantID.ValueString(),
+		params,
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)

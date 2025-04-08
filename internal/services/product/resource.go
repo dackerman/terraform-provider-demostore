@@ -63,6 +63,12 @@ func (r *ProductResource) Create(ctx context.Context, req resource.CreateRequest
 		return
 	}
 
+	params := dackermanstore.ProductNewParams{}
+
+	if !data.OrgID.IsNull() {
+		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
+	}
+
 	dataBytes, err := data.MarshalJSON()
 	if err != nil {
 		resp.Diagnostics.AddError("failed to serialize http request", err.Error())
@@ -71,7 +77,7 @@ func (r *ProductResource) Create(ctx context.Context, req resource.CreateRequest
 	res := new(http.Response)
 	_, err = r.client.Products.New(
 		ctx,
-		dackermanstore.ProductNewParams{},
+		params,
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -92,49 +98,7 @@ func (r *ProductResource) Create(ctx context.Context, req resource.CreateRequest
 }
 
 func (r *ProductResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	var data *ProductModel
-
-	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
-
-	if resp.Diagnostics.HasError() {
-		return
-	}
-
-	var state *ProductModel
-
-	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
-
-	if resp.Diagnostics.HasError() {
-		return
-	}
-
-	dataBytes, err := data.MarshalJSONForUpdate(*state)
-	if err != nil {
-		resp.Diagnostics.AddError("failed to serialize http request", err.Error())
-		return
-	}
-	res := new(http.Response)
-	_, err = r.client.Products.Update(
-		ctx,
-		data.ProductID.ValueString(),
-		dackermanstore.ProductUpdateParams{},
-		option.WithRequestBody("application/json", dataBytes),
-		option.WithResponseBodyInto(&res),
-		option.WithMiddleware(logging.Middleware(ctx)),
-	)
-	if err != nil {
-		resp.Diagnostics.AddError("failed to make http request", err.Error())
-		return
-	}
-	bytes, _ := io.ReadAll(res.Body)
-	err = apijson.UnmarshalComputed(bytes, &data)
-	if err != nil {
-		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
-		return
-	}
-	data.ID = data.ProductID
-
-	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
+	// Update is not supported for this resource
 }
 
 func (r *ProductResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
@@ -146,10 +110,17 @@ func (r *ProductResource) Read(ctx context.Context, req resource.ReadRequest, re
 		return
 	}
 
+	params := dackermanstore.ProductGetParams{}
+
+	if !data.OrgID.IsNull() {
+		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
+	}
+
 	res := new(http.Response)
 	_, err := r.client.Products.Get(
 		ctx,
 		data.ProductID.ValueString(),
+		params,
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
@@ -182,9 +153,16 @@ func (r *ProductResource) Delete(ctx context.Context, req resource.DeleteRequest
 		return
 	}
 
+	params := dackermanstore.ProductDeleteParams{}
+
+	if !data.OrgID.IsNull() {
+		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
+	}
+
 	_, err := r.client.Products.Delete(
 		ctx,
 		data.ProductID.ValueString(),
+		params,
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
@@ -199,23 +177,29 @@ func (r *ProductResource) Delete(ctx context.Context, req resource.DeleteRequest
 func (r *ProductResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
 	var data *ProductModel = new(ProductModel)
 
-	path := ""
+	path_org_id := ""
+	path_product_id := ""
 	diags := importpath.ParseImportID(
 		req.ID,
-		"<product_id>",
-		&path,
+		"<org_id>/<product_id>",
+		&path_org_id,
+		&path_product_id,
 	)
 	resp.Diagnostics.Append(diags...)
 	if resp.Diagnostics.HasError() {
 		return
 	}
 
-	data.ProductID = types.StringValue(path)
+	data.OrgID = types.StringValue(path_org_id)
+	data.ProductID = types.StringValue(path_product_id)
 
 	res := new(http.Response)
 	_, err := r.client.Products.Get(
 		ctx,
-		path,
+		path_product_id,
+		dackermanstore.ProductGetParams{
+			OrgID: dackermanstore.F(path_org_id),
+		},
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
