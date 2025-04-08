@@ -63,6 +63,12 @@ func (r *ProductVariantResource) Create(ctx context.Context, req resource.Create
 		return
 	}
 
+	params := dackermanstore.ProductVariantNewParams{}
+
+	if !data.OrgID.IsNull() {
+		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
+	}
+
 	dataBytes, err := data.MarshalJSON()
 	if err != nil {
 		resp.Diagnostics.AddError("failed to serialize http request", err.Error())
@@ -72,7 +78,7 @@ func (r *ProductVariantResource) Create(ctx context.Context, req resource.Create
 	_, err = r.client.Products.Variants.New(
 		ctx,
 		data.ProductID.ValueString(),
-		dackermanstore.ProductVariantNewParams{},
+		params,
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -109,6 +115,12 @@ func (r *ProductVariantResource) Update(ctx context.Context, req resource.Update
 		return
 	}
 
+	params := dackermanstore.ProductVariantUpdateParams{}
+
+	if !data.OrgID.IsNull() {
+		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
+	}
+
 	dataBytes, err := data.MarshalJSONForUpdate(*state)
 	if err != nil {
 		resp.Diagnostics.AddError("failed to serialize http request", err.Error())
@@ -119,7 +131,7 @@ func (r *ProductVariantResource) Update(ctx context.Context, req resource.Update
 		ctx,
 		data.ProductID.ValueString(),
 		data.VariantID.ValueString(),
-		dackermanstore.ProductVariantUpdateParams{},
+		params,
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -148,11 +160,18 @@ func (r *ProductVariantResource) Read(ctx context.Context, req resource.ReadRequ
 		return
 	}
 
+	params := dackermanstore.ProductVariantGetParams{}
+
+	if !data.OrgID.IsNull() {
+		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
+	}
+
 	res := new(http.Response)
 	_, err := r.client.Products.Variants.Get(
 		ctx,
 		data.ProductID.ValueString(),
 		data.VariantID.ValueString(),
+		params,
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
@@ -185,10 +204,17 @@ func (r *ProductVariantResource) Delete(ctx context.Context, req resource.Delete
 		return
 	}
 
+	params := dackermanstore.ProductVariantDeleteParams{}
+
+	if !data.OrgID.IsNull() {
+		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
+	}
+
 	_, err := r.client.Products.Variants.Delete(
 		ctx,
 		data.ProductID.ValueString(),
 		data.VariantID.ValueString(),
+		params,
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
 	if err != nil {
@@ -203,11 +229,13 @@ func (r *ProductVariantResource) Delete(ctx context.Context, req resource.Delete
 func (r *ProductVariantResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
 	var data *ProductVariantModel = new(ProductVariantModel)
 
+	path_org_id := ""
 	path_product_id := ""
 	path_variant_id := ""
 	diags := importpath.ParseImportID(
 		req.ID,
-		"<product_id>/<variant_id>",
+		"<org_id>/<product_id>/<variant_id>",
+		&path_org_id,
 		&path_product_id,
 		&path_variant_id,
 	)
@@ -216,6 +244,7 @@ func (r *ProductVariantResource) ImportState(ctx context.Context, req resource.I
 		return
 	}
 
+	data.OrgID = types.StringValue(path_org_id)
 	data.ProductID = types.StringValue(path_product_id)
 	data.VariantID = types.StringValue(path_variant_id)
 
@@ -224,6 +253,9 @@ func (r *ProductVariantResource) ImportState(ctx context.Context, req resource.I
 		ctx,
 		path_product_id,
 		path_variant_id,
+		dackermanstore.ProductVariantGetParams{
+			OrgID: dackermanstore.F(path_org_id),
+		},
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)

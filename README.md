@@ -31,10 +31,13 @@ terraform {
 provider "demostore" {
   # The token to use for authentication
   auth_token = "123e4567-e89b-12d3-a456-426614174000" # or set DEMOSTORE_API_KEY env variable
+  # The organization ID context
+  org_id = "my_org" # or set DEMOSTORE_ORG_ID env variable
 }
 
 # Configure a resource
 resource "demostore_product" "example_product" {
+  org_id = "org_id"
   description = "description"
   image_url = "image_url"
   name = "name"
@@ -56,6 +59,7 @@ If an environment variable is provided, then the option does not need to be set 
 
 | Property   | Environment variable | Required | Default value |
 | ---------- | -------------------- | -------- | ------------- |
+| org_id     | `DEMOSTORE_ORG_ID`   | true     | —             |
 | auth_token | `DEMOSTORE_API_KEY`  | true     | —             |
 
 ## Semantic versioning

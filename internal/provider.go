@@ -32,6 +32,7 @@ type DemostoreProvider struct {
 type DemostoreProviderModel struct {
 	BaseURL   types.String `tfsdk:"base_url" json:"base_url,optional"`
 	AuthToken types.String `tfsdk:"auth_token" json:"auth_token,optional"`
+	OrgID     types.String `tfsdk:"org_id" json:"org_id,optional"`
 }
 
 func (p *DemostoreProvider) Metadata(ctx context.Context, req provider.MetadataRequest, resp *provider.MetadataResponse) {
@@ -47,6 +48,9 @@ func ProviderSchema(ctx context.Context) schema.Schema {
 				Optional:    true,
 			},
 			"auth_token": schema.StringAttribute{
+				Optional: true,
+			},
+			"org_id": schema.StringAttribute{
 				Optional: true,
 			},
 		},
@@ -80,6 +84,19 @@ func (p *DemostoreProvider) Configure(ctx context.Context, req provider.Configur
 			path.Root("auth_token"),
 			"Missing auth_token value",
 			"The auth_token field is required. Set it in provider configuration or via the \"DEMOSTORE_API_KEY\" environment variable.",
+		)
+		return
+	}
+
+	if !data.OrgID.IsNull() && !data.OrgID.IsUnknown() {
+		opts = append(opts, option.WithOrgID(data.OrgID.ValueString()))
+	} else if o, ok := os.LookupEnv("DEMOSTORE_ORG_ID"); ok {
+		opts = append(opts, option.WithOrgID(o))
+	} else {
+		resp.Diagnostics.AddAttributeError(
+			path.Root("org_id"),
+			"Missing org_id value",
+			"The org_id field is required. Set it in provider configuration or via the \"DEMOSTORE_ORG_ID\" environment variable.",
 		)
 		return
 	}

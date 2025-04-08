@@ -1,4 +1,4 @@
-configured_endpoints: 10
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/dackerman%2Fdackerman-store-1f9a7d0658399dcac02423e8b31074c8cfe4d83f603813353d37cdb9f58dceed.yml
-openapi_spec_hash: 1103a25b3f75afc51fcba9d36ed71375
-config_hash: dde01dd3d3cd07760ffa599c37b7748b
+configured_endpoints: 11
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/dackerman%2Fdackerman-store-ac3f5858ecac03675ce164bc07b135bef574e70f5f5d9bfff40c861f7d32c0cd.yml
+openapi_spec_hash: c30a9192f40e34afa25f1be1099e9f98
+config_hash: 0dd292b8b0ad34cfeced63cf014cfaee
