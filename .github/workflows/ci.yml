@@ -8,18 +8,19 @@ on:
       - main
       - next
 
-env:
-  GOPRIVATE: github.com/dackerman/demostore-go
-
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/setup-go
+      - name: Setup go
+        uses: actions/setup-go@v5
         with:
-          stainless-api-key: ${{ secrets.STAINLESS_API_KEY }}
+          go-version-file: ./go.mod
+
+      - name: Bootstrap
+        run: ./scripts/bootstrap
 
       - name: Run lints
         run: ./scripts/lint
@@ -29,9 +30,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: ./.github/actions/setup-go
+      - name: Setup go
+        uses: actions/setup-go@v5
         with:
-          stainless-api-key: ${{ secrets.STAINLESS_API_KEY }}
+          go-version-file: ./go.mod
+
+      - name: Bootstrap
+        run: ./scripts/bootstrap
 
       - name: Run tests
         run: ./scripts/test

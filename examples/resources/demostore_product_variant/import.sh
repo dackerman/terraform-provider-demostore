@@ -1,1 +1,1 @@
-$ terraform import demostore_product_variant.example '<product_id>/<variant_id>'
+$ terraform import demostore_product_variant.example '<org_id>/<product_id>/<variant_id>'
