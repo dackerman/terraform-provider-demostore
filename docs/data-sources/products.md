@@ -14,7 +14,7 @@ description: |-
 
 ```terraform
 data "demostore_products" "example_products" {
-
+  org_id = "org_id"
 }
 ```
 
@@ -24,6 +24,7 @@ data "demostore_products" "example_products" {
 ### Optional
 
 - `max_items` (Number) Max items to fetch, default: 1000
+- `org_id` (String)
 
 ### Read-Only
 
@@ -37,5 +38,5 @@ Read-Only:
 - `description` (String)
 - `image_url` (String)
 - `name` (String)
-- `price` (Number) Price.
+- `price` (Number)
 - `product_id` (String)

@@ -15,6 +15,7 @@ description: |-
 ```terraform
 provider "demostore" {
   auth_token = "123e4567-e89b-12d3-a456-426614174000"
+  org_id = "my_org"
 }
 ```
 
@@ -25,3 +26,4 @@ provider "demostore" {
 
 - `auth_token` (String)
 - `base_url` (String) Set the base url that the provider connects to. This can be used for testing in other environments.
+- `org_id` (String)

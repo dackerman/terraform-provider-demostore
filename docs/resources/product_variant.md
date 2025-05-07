@@ -14,6 +14,7 @@ description: |-
 
 ```terraform
 resource "demostore_product_variant" "example_product_variant" {
+  org_id = "org_id"
   product_id = "product_id"
   image_url = "image_url"
   name = "name"
@@ -31,6 +32,10 @@ resource "demostore_product_variant" "example_product_variant" {
 - `price` (Number)
 - `product_id` (String)
 
+### Optional
+
+- `org_id` (String)
+
 ### Read-Only
 
 - `id` (String) The ID of this resource.
@@ -41,5 +46,5 @@ resource "demostore_product_variant" "example_product_variant" {
 Import is supported using the following syntax:
 
 ```shell
-$ terraform import demostore_product_variant.example '<product_id>/<variant_id>'
+$ terraform import demostore_product_variant.example '<org_id>/<product_id>/<variant_id>'
 ```

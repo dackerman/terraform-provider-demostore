@@ -14,6 +14,7 @@ description: |-
 
 ```terraform
 data "demostore_product" "example_product" {
+  org_id = "org_id"
   product_id = "product_id"
 }
 ```
@@ -23,6 +24,7 @@ data "demostore_product" "example_product" {
 
 ### Required
 
+- `org_id` (String)
 - `product_id` (String)
 
 ### Read-Only
@@ -30,4 +32,4 @@ data "demostore_product" "example_product" {
 - `description` (String)
 - `image_url` (String)
 - `name` (String)
-- `price` (Number) Price.
+- `price` (Number)

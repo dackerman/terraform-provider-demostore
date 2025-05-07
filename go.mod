@@ -2,10 +2,10 @@ module github.com/dackerman/terraform-provider-demostore
 
 go 1.23.0
 
-toolchain go1.23.8
+toolchain go1.23.9
 
 require (
-	github.com/dackerman/demostore-go v0.3.0
+	github.com/dackerman/demostore-go v0.4.0
 	github.com/davecgh/go-spew v1.1.1
 	github.com/hashicorp/terraform-plugin-docs v0.16.0
 	github.com/hashicorp/terraform-plugin-framework v1.14.1
