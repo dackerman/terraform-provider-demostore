@@ -14,11 +14,11 @@ description: |-
 
 ```terraform
 resource "demostore_product_variant" "example_product_variant" {
+  org_id = "org_id"
   product_id = "product_id"
   image_url = "image_url"
   name = "name"
   price = 0
-  type = "big"
 }
 ```
 
@@ -27,14 +27,14 @@ resource "demostore_product_variant" "example_product_variant" {
 
 ### Required
 
-- `image_url` (String) URL of the image to display for the variant
-- `name` (String) The name of the product
+- `image_url` (String)
+- `name` (String)
 - `price` (Number)
 - `product_id` (String)
 
 ### Optional
 
-- `type` (String)
+- `org_id` (String)
 
 ### Read-Only
 
@@ -46,5 +46,5 @@ resource "demostore_product_variant" "example_product_variant" {
 Import is supported using the following syntax:
 
 ```shell
-$ terraform import demostore_product_variant.example '<product_id>/<variant_id>'
+$ terraform import demostore_product_variant.example '<org_id>/<product_id>/<variant_id>'
 ```
