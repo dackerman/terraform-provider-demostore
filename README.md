@@ -3,7 +3,7 @@
 The [Stainless Store Terraform provider](https://registry.terraform.io/providers/dackerman/demostore/latest/docs) provides convenient access to
 [the Stainless Store REST API](https://docs.dackerman-store.com) from Terraform.
 
-It is generated with [Stainless](https://www.stainlessapi.com/).
+It is generated with [Stainless](https://www.stainless.com/).
 
 ## Requirements
 
@@ -34,12 +34,11 @@ provider "demostore" {
 }
 
 # Configure a resource
-resource "demostore_products" "example_products" {
+resource "demostore_product" "example_product" {
   description = "description"
   image_url = "image_url"
   name = "name"
   price = 0
-  long_description = "long_description"
 }
 ```
 

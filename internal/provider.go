@@ -8,8 +8,8 @@ import (
 
 	"github.com/dackerman/demostore-go"
 	"github.com/dackerman/demostore-go/option"
+	"github.com/dackerman/terraform-provider-demostore/internal/services/product"
 	"github.com/dackerman/terraform-provider-demostore/internal/services/product_variant"
-	"github.com/dackerman/terraform-provider-demostore/internal/services/products"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
 	"github.com/hashicorp/terraform-plugin-framework/provider"
 	"github.com/hashicorp/terraform-plugin-framework/provider/schema"
@@ -88,14 +88,14 @@ func (p *DemostoreProvider) ConfigValidators(_ context.Context) []provider.Confi
 
 func (p *DemostoreProvider) Resources(ctx context.Context) []func() resource.Resource {
 	return []func() resource.Resource{
-		products.NewResource,
+		product.NewResource,
 		product_variant.NewResource,
 	}
 }
 
 func (p *DemostoreProvider) DataSources(ctx context.Context) []func() datasource.DataSource {
 	return []func() datasource.DataSource{
-		products.NewProductsDataSource,
+		product.NewProductDataSource,
 		product_variant.NewProductVariantDataSource,
 	}
 }
