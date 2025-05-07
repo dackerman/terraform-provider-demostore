@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-package product_variant
+package product
 
 import (
 	"context"
@@ -18,24 +18,24 @@ import (
 )
 
 // Ensure provider defined types fully satisfy framework interfaces.
-var _ resource.ResourceWithConfigure = (*ProductVariantResource)(nil)
-var _ resource.ResourceWithModifyPlan = (*ProductVariantResource)(nil)
-var _ resource.ResourceWithImportState = (*ProductVariantResource)(nil)
+var _ resource.ResourceWithConfigure = (*ProductResource)(nil)
+var _ resource.ResourceWithModifyPlan = (*ProductResource)(nil)
+var _ resource.ResourceWithImportState = (*ProductResource)(nil)
 
 func NewResource() resource.Resource {
-	return &ProductVariantResource{}
+	return &ProductResource{}
 }
 
-// ProductVariantResource defines the resource implementation.
-type ProductVariantResource struct {
+// ProductResource defines the resource implementation.
+type ProductResource struct {
 	client *dackermanstore.Client
 }
 
-func (r *ProductVariantResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
-	resp.TypeName = req.ProviderTypeName + "_product_variant"
+func (r *ProductResource) Metadata(ctx context.Context, req resource.MetadataRequest, resp *resource.MetadataResponse) {
+	resp.TypeName = req.ProviderTypeName + "_product"
 }
 
-func (r *ProductVariantResource) Configure(ctx context.Context, req resource.ConfigureRequest, resp *resource.ConfigureResponse) {
+func (r *ProductResource) Configure(ctx context.Context, req resource.ConfigureRequest, resp *resource.ConfigureResponse) {
 	if req.ProviderData == nil {
 		return
 	}
@@ -54,8 +54,8 @@ func (r *ProductVariantResource) Configure(ctx context.Context, req resource.Con
 	r.client = client
 }
 
-func (r *ProductVariantResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
-	var data *ProductVariantModel
+func (r *ProductResource) Create(ctx context.Context, req resource.CreateRequest, resp *resource.CreateResponse) {
+	var data *ProductModel
 
 	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
 
@@ -63,7 +63,7 @@ func (r *ProductVariantResource) Create(ctx context.Context, req resource.Create
 		return
 	}
 
-	params := dackermanstore.ProductVariantNewParams{}
+	params := dackermanstore.ProductNewParams{}
 
 	if !data.OrgID.IsNull() {
 		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
@@ -75,9 +75,8 @@ func (r *ProductVariantResource) Create(ctx context.Context, req resource.Create
 		return
 	}
 	res := new(http.Response)
-	_, err = r.client.Products.Variants.New(
+	_, err = r.client.Products.New(
 		ctx,
-		data.ProductID.ValueString(),
 		params,
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
@@ -93,66 +92,17 @@ func (r *ProductVariantResource) Create(ctx context.Context, req resource.Create
 		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
 	}
-	data.ID = data.VariantID
+	data.ID = data.ProductID
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *ProductVariantResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
-	var data *ProductVariantModel
-
-	resp.Diagnostics.Append(req.Plan.Get(ctx, &data)...)
-
-	if resp.Diagnostics.HasError() {
-		return
-	}
-
-	var state *ProductVariantModel
-
-	resp.Diagnostics.Append(req.State.Get(ctx, &state)...)
-
-	if resp.Diagnostics.HasError() {
-		return
-	}
-
-	params := dackermanstore.ProductVariantUpdateParams{}
-
-	if !data.OrgID.IsNull() {
-		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
-	}
-
-	dataBytes, err := data.MarshalJSONForUpdate(*state)
-	if err != nil {
-		resp.Diagnostics.AddError("failed to serialize http request", err.Error())
-		return
-	}
-	res := new(http.Response)
-	_, err = r.client.Products.Variants.Update(
-		ctx,
-		data.ProductID.ValueString(),
-		data.VariantID.ValueString(),
-		params,
-		option.WithRequestBody("application/json", dataBytes),
-		option.WithResponseBodyInto(&res),
-		option.WithMiddleware(logging.Middleware(ctx)),
-	)
-	if err != nil {
-		resp.Diagnostics.AddError("failed to make http request", err.Error())
-		return
-	}
-	bytes, _ := io.ReadAll(res.Body)
-	err = apijson.UnmarshalComputed(bytes, &data)
-	if err != nil {
-		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
-		return
-	}
-	data.ID = data.VariantID
-
-	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
+func (r *ProductResource) Update(ctx context.Context, req resource.UpdateRequest, resp *resource.UpdateResponse) {
+	// Update is not supported for this resource
 }
 
-func (r *ProductVariantResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
-	var data *ProductVariantModel
+func (r *ProductResource) Read(ctx context.Context, req resource.ReadRequest, resp *resource.ReadResponse) {
+	var data *ProductModel
 
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
 
@@ -160,17 +110,16 @@ func (r *ProductVariantResource) Read(ctx context.Context, req resource.ReadRequ
 		return
 	}
 
-	params := dackermanstore.ProductVariantGetParams{}
+	params := dackermanstore.ProductGetParams{}
 
 	if !data.OrgID.IsNull() {
 		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
 	}
 
 	res := new(http.Response)
-	_, err := r.client.Products.Variants.Get(
+	_, err := r.client.Products.Get(
 		ctx,
 		data.ProductID.ValueString(),
-		data.VariantID.ValueString(),
 		params,
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
@@ -190,13 +139,13 @@ func (r *ProductVariantResource) Read(ctx context.Context, req resource.ReadRequ
 		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
 	}
-	data.ID = data.VariantID
+	data.ID = data.ProductID
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *ProductVariantResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
-	var data *ProductVariantModel
+func (r *ProductResource) Delete(ctx context.Context, req resource.DeleteRequest, resp *resource.DeleteResponse) {
+	var data *ProductModel
 
 	resp.Diagnostics.Append(req.State.Get(ctx, &data)...)
 
@@ -204,16 +153,15 @@ func (r *ProductVariantResource) Delete(ctx context.Context, req resource.Delete
 		return
 	}
 
-	params := dackermanstore.ProductVariantDeleteParams{}
+	params := dackermanstore.ProductDeleteParams{}
 
 	if !data.OrgID.IsNull() {
 		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
 	}
 
-	_, err := r.client.Products.Variants.Delete(
+	_, err := r.client.Products.Delete(
 		ctx,
 		data.ProductID.ValueString(),
-		data.VariantID.ValueString(),
 		params,
 		option.WithMiddleware(logging.Middleware(ctx)),
 	)
@@ -221,23 +169,21 @@ func (r *ProductVariantResource) Delete(ctx context.Context, req resource.Delete
 		resp.Diagnostics.AddError("failed to make http request", err.Error())
 		return
 	}
-	data.ID = data.VariantID
+	data.ID = data.ProductID
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *ProductVariantResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
-	var data *ProductVariantModel = new(ProductVariantModel)
+func (r *ProductResource) ImportState(ctx context.Context, req resource.ImportStateRequest, resp *resource.ImportStateResponse) {
+	var data *ProductModel = new(ProductModel)
 
 	path_org_id := ""
 	path_product_id := ""
-	path_variant_id := ""
 	diags := importpath.ParseImportID(
 		req.ID,
-		"<org_id>/<product_id>/<variant_id>",
+		"<org_id>/<product_id>",
 		&path_org_id,
 		&path_product_id,
-		&path_variant_id,
 	)
 	resp.Diagnostics.Append(diags...)
 	if resp.Diagnostics.HasError() {
@@ -246,14 +192,12 @@ func (r *ProductVariantResource) ImportState(ctx context.Context, req resource.I
 
 	data.OrgID = types.StringValue(path_org_id)
 	data.ProductID = types.StringValue(path_product_id)
-	data.VariantID = types.StringValue(path_variant_id)
 
 	res := new(http.Response)
-	_, err := r.client.Products.Variants.Get(
+	_, err := r.client.Products.Get(
 		ctx,
 		path_product_id,
-		path_variant_id,
-		dackermanstore.ProductVariantGetParams{
+		dackermanstore.ProductGetParams{
 			OrgID: dackermanstore.F(path_org_id),
 		},
 		option.WithResponseBodyInto(&res),
@@ -269,11 +213,11 @@ func (r *ProductVariantResource) ImportState(ctx context.Context, req resource.I
 		resp.Diagnostics.AddError("failed to deserialize http request", err.Error())
 		return
 	}
-	data.ID = data.VariantID
+	data.ID = data.ProductID
 
 	resp.Diagnostics.Append(resp.State.Set(ctx, &data)...)
 }
 
-func (r *ProductVariantResource) ModifyPlan(_ context.Context, _ resource.ModifyPlanRequest, _ *resource.ModifyPlanResponse) {
+func (r *ProductResource) ModifyPlan(_ context.Context, _ resource.ModifyPlanRequest, _ *resource.ModifyPlanResponse) {
 
 }

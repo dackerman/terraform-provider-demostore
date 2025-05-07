@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0 (2025-05-07)
+
+Full Changelog: [v0.4.0...v0.5.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.4.0...v0.5.0)
+
+### Features
+
+* **api:** update via SDK Studio ([2e0e7d5](https://github.com/dackerman/terraform-provider-demostore/commit/2e0e7d52735ee78f8e05291bcef6ef7deb0b2506))
+
 ## 0.8.0 (2025-02-14)
 
 Full Changelog: [v0.7.0...v0.8.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.7.0...v0.8.0)
