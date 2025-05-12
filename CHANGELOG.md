@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.9.0 (2025-05-12)
+
+Full Changelog: [v0.4.0...v0.9.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.4.0...v0.9.0)
+
+### Chores
+
+* **build:** update go.mod indirect dependencies ([e03f2e6](https://github.com/dackerman/terraform-provider-demostore/commit/e03f2e65512631663db01834e6d8fd9a0ce4537f))
+* fix whitespace ([27eb3d5](https://github.com/dackerman/terraform-provider-demostore/commit/27eb3d58267291f18912aac51c56afba8b18e8c9))
+* **internal:** codegen related update ([404d190](https://github.com/dackerman/terraform-provider-demostore/commit/404d1901313e6fd37d283d41741bf339e5255c0e))
+* Update .release-please-manifest.json ([fbe9554](https://github.com/dackerman/terraform-provider-demostore/commit/fbe9554d1b6b197b10701c68085ef2d688c3c87c))
+
 ## 0.4.1 (2025-05-07)
 
 Full Changelog: [v0.4.0...v0.4.1](https://github.com/dackerman/terraform-provider-demostore/compare/v0.4.0...v0.4.1)
