@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.9.1 (2025-05-13)
+
+Full Changelog: [v0.4.0...v0.9.1](https://github.com/dackerman/terraform-provider-demostore/compare/v0.4.0...v0.9.1)
+
+### Chores
+
+* remove custom code ([58b9480](https://github.com/dackerman/terraform-provider-demostore/commit/58b9480e4c42796f4c8af643e74f261a15fe1274))
+
 ## 0.9.0 (2025-05-12)
 
 Full Changelog: [v0.4.0...v0.9.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.4.0...v0.9.0)
