@@ -59,9 +59,5 @@
       "hidden": true
     }
   ],
-  "release-type": "simple",
-    "extra-files": [
-    "internal/version.go",
-    "README.md"
-  ]
+  "release-type": "simple"
 }
