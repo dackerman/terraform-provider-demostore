@@ -74,7 +74,7 @@ func (d *ProductsDataSource) Read(ctx context.Context, req datasource.ReadReques
 	}
 
 	for page != nil && len(page.Data) > 0 {
-		bytes := []byte(page.RawJSON())
+		bytes := []byte(page.JSON.RawJSON())
 		err = apijson.UnmarshalComputed(bytes, &env)
 		if err != nil {
 			resp.Diagnostics.AddError("failed to unmarshal http request", err.Error())
