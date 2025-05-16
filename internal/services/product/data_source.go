@@ -8,8 +8,8 @@ import (
 	"io"
 	"net/http"
 
-	"github.com/dackerman/demostore-go"
-	"github.com/dackerman/demostore-go/option"
+	"github.com/dackerman/demostore-go/v2"
+	"github.com/dackerman/demostore-go/v2/option"
 	"github.com/dackerman/terraform-provider-demostore/internal/apijson"
 	"github.com/dackerman/terraform-provider-demostore/internal/logging"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"

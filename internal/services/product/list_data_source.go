@@ -6,7 +6,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/dackerman/demostore-go"
+	"github.com/dackerman/demostore-go/v2"
 	"github.com/dackerman/terraform-provider-demostore/internal/apijson"
 	"github.com/dackerman/terraform-provider-demostore/internal/customfield"
 	"github.com/hashicorp/terraform-plugin-framework/attr"
@@ -74,7 +74,7 @@ func (d *ProductsDataSource) Read(ctx context.Context, req datasource.ReadReques
 	}
 
 	for page != nil && len(page.Data) > 0 {
-		bytes := []byte(page.JSON.RawJSON())
+		bytes := []byte(page.RawJSON())
 		err = apijson.UnmarshalComputed(bytes, &env)
 		if err != nil {
 			resp.Diagnostics.AddError("failed to unmarshal http request", err.Error())

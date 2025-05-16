@@ -24,7 +24,7 @@ data "demostore_product" "example_product" {
 
 ### Required
 
-- `org_id` (String)
+- `org_id` (String) The ID of the organization you're a part of
 - `product_id` (String)
 
 ### Read-Only

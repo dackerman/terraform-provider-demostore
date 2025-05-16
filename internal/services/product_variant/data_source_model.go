@@ -5,7 +5,8 @@ package product_variant
 import (
 	"context"
 
-	"github.com/dackerman/demostore-go"
+	"github.com/dackerman/demostore-go/v2"
+	"github.com/dackerman/demostore-go/v2/packages/param"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
@@ -23,7 +24,7 @@ func (m *ProductVariantDataSourceModel) toReadParams(_ context.Context) (params 
 	params = dackermanstore.ProductVariantGetParams{}
 
 	if !m.OrgID.IsNull() {
-		params.OrgID = dackermanstore.F(m.OrgID.ValueString())
+		params.OrgID = param.NewOpt(m.OrgID.ValueString())
 	}
 
 	return
