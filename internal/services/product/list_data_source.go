@@ -4,9 +4,9 @@ package product
 
 import (
 	"context"
+	"dackerman/demostore-go/v2"
 	"fmt"
 
-	"github.com/dackerman/demostore-go"
 	"github.com/dackerman/terraform-provider-demostore/internal/apijson"
 	"github.com/dackerman/terraform-provider-demostore/internal/customfield"
 	"github.com/hashicorp/terraform-plugin-framework/attr"
