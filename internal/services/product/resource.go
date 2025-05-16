@@ -10,6 +10,7 @@ import (
 
 	"github.com/dackerman/demostore-go"
 	"github.com/dackerman/demostore-go/option"
+	"github.com/dackerman/demostore-go/packages/param"
 	"github.com/dackerman/terraform-provider-demostore/internal/apijson"
 	"github.com/dackerman/terraform-provider-demostore/internal/importpath"
 	"github.com/dackerman/terraform-provider-demostore/internal/logging"
@@ -66,7 +67,7 @@ func (r *ProductResource) Create(ctx context.Context, req resource.CreateRequest
 	params := dackermanstore.ProductNewParams{}
 
 	if !data.OrgID.IsNull() {
-		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
+		params.OrgID = param.NewOpt(data.OrgID.ValueString())
 	}
 
 	dataBytes, err := data.MarshalJSON()
@@ -113,7 +114,7 @@ func (r *ProductResource) Read(ctx context.Context, req resource.ReadRequest, re
 	params := dackermanstore.ProductGetParams{}
 
 	if !data.OrgID.IsNull() {
-		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
+		params.OrgID = param.NewOpt(data.OrgID.ValueString())
 	}
 
 	res := new(http.Response)
@@ -156,7 +157,7 @@ func (r *ProductResource) Delete(ctx context.Context, req resource.DeleteRequest
 	params := dackermanstore.ProductDeleteParams{}
 
 	if !data.OrgID.IsNull() {
-		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
+		params.OrgID = param.NewOpt(data.OrgID.ValueString())
 	}
 
 	_, err := r.client.Products.Delete(
@@ -198,7 +199,7 @@ func (r *ProductResource) ImportState(ctx context.Context, req resource.ImportSt
 		ctx,
 		path_product_id,
 		dackermanstore.ProductGetParams{
-			OrgID: dackermanstore.F(path_org_id),
+			OrgID: param.NewOpt(path_org_id),
 		},
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
