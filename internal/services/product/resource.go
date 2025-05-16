@@ -4,13 +4,13 @@ package product
 
 import (
 	"context"
-	"dackerman/demostore-go/v2"
-	"dackerman/demostore-go/v2/option"
-	"dackerman/demostore-go/v2/packages/param"
 	"fmt"
 	"io"
 	"net/http"
 
+	"github.com/dackerman/demostore-go/v2"
+	"github.com/dackerman/demostore-go/v2/option"
+	"github.com/dackerman/demostore-go/v2/packages/param"
 	"github.com/dackerman/terraform-provider-demostore/internal/apijson"
 	"github.com/dackerman/terraform-provider-demostore/internal/importpath"
 	"github.com/dackerman/terraform-provider-demostore/internal/logging"

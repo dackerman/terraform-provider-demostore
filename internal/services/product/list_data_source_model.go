@@ -4,9 +4,9 @@ package product
 
 import (
 	"context"
-	"dackerman/demostore-go/v2"
-	"dackerman/demostore-go/v2/packages/param"
 
+	"github.com/dackerman/demostore-go/v2"
+	"github.com/dackerman/demostore-go/v2/packages/param"
 	"github.com/dackerman/terraform-provider-demostore/internal/customfield"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
