@@ -10,7 +10,6 @@ import (
 
 	"github.com/dackerman/demostore-go"
 	"github.com/dackerman/demostore-go/option"
-	"github.com/dackerman/demostore-go/packages/param"
 	"github.com/dackerman/terraform-provider-demostore/internal/apijson"
 	"github.com/dackerman/terraform-provider-demostore/internal/importpath"
 	"github.com/dackerman/terraform-provider-demostore/internal/logging"
@@ -67,7 +66,7 @@ func (r *ProductVariantResource) Create(ctx context.Context, req resource.Create
 	params := dackermanstore.ProductVariantNewParams{}
 
 	if !data.OrgID.IsNull() {
-		params.OrgID = param.NewOpt(data.OrgID.ValueString())
+		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
 	}
 
 	dataBytes, err := data.MarshalJSON()
@@ -119,7 +118,7 @@ func (r *ProductVariantResource) Update(ctx context.Context, req resource.Update
 	params := dackermanstore.ProductVariantUpdateParams{}
 
 	if !data.OrgID.IsNull() {
-		params.OrgID = param.NewOpt(data.OrgID.ValueString())
+		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
 	}
 
 	dataBytes, err := data.MarshalJSONForUpdate(*state)
@@ -164,7 +163,7 @@ func (r *ProductVariantResource) Read(ctx context.Context, req resource.ReadRequ
 	params := dackermanstore.ProductVariantGetParams{}
 
 	if !data.OrgID.IsNull() {
-		params.OrgID = param.NewOpt(data.OrgID.ValueString())
+		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
 	}
 
 	res := new(http.Response)
@@ -208,7 +207,7 @@ func (r *ProductVariantResource) Delete(ctx context.Context, req resource.Delete
 	params := dackermanstore.ProductVariantDeleteParams{}
 
 	if !data.OrgID.IsNull() {
-		params.OrgID = param.NewOpt(data.OrgID.ValueString())
+		params.OrgID = dackermanstore.F(data.OrgID.ValueString())
 	}
 
 	_, err := r.client.Products.Variants.Delete(
@@ -255,7 +254,7 @@ func (r *ProductVariantResource) ImportState(ctx context.Context, req resource.I
 		path_product_id,
 		path_variant_id,
 		dackermanstore.ProductVariantGetParams{
-			OrgID: param.NewOpt(path_org_id),
+			OrgID: dackermanstore.F(path_org_id),
 		},
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),

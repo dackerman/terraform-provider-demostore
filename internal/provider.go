@@ -105,8 +105,8 @@ func (p *DemostoreProvider) Configure(ctx context.Context, req provider.Configur
 		opts...,
 	)
 
-	resp.DataSourceData = &client
-	resp.ResourceData = &client
+	resp.DataSourceData = client
+	resp.ResourceData = client
 }
 
 func (p *DemostoreProvider) ConfigValidators(_ context.Context) []provider.ConfigValidator {
