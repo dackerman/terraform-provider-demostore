@@ -4,10 +4,10 @@ package internal
 
 import (
 	"context"
-	"dackerman/demostore-go/v2"
-	"dackerman/demostore-go/v2/option"
 	"os"
 
+	"github.com/dackerman/demostore-go/v2"
+	"github.com/dackerman/demostore-go/v2/option"
 	"github.com/dackerman/terraform-provider-demostore/internal/services/product"
 	"github.com/dackerman/terraform-provider-demostore/internal/services/product_variant"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"

@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"strings"
 
-	"dackerman/demostore-go/v2/option"
+	"github.com/dackerman/demostore-go/v2/option"
 
 	"github.com/hashicorp/terraform-plugin-log/tflog"
 )

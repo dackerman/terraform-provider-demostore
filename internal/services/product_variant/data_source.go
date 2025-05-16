@@ -4,12 +4,12 @@ package product_variant
 
 import (
 	"context"
-	"dackerman/demostore-go/v2"
-	"dackerman/demostore-go/v2/option"
 	"fmt"
 	"io"
 	"net/http"
 
+	"github.com/dackerman/demostore-go/v2"
+	"github.com/dackerman/demostore-go/v2/option"
 	"github.com/dackerman/terraform-provider-demostore/internal/apijson"
 	"github.com/dackerman/terraform-provider-demostore/internal/logging"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
