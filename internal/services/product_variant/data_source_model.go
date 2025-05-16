@@ -4,9 +4,9 @@ package product_variant
 
 import (
 	"context"
+	"dackerman/demostore-go/v2"
+	"dackerman/demostore-go/v2/packages/param"
 
-	"github.com/dackerman/demostore-go"
-	"github.com/dackerman/demostore-go/packages/param"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
