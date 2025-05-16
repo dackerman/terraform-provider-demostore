@@ -6,6 +6,7 @@ import (
 	"context"
 
 	"github.com/dackerman/demostore-go"
+	"github.com/dackerman/demostore-go/packages/param"
 	"github.com/dackerman/terraform-provider-demostore/internal/customfield"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
@@ -25,7 +26,7 @@ func (m *ProductsDataSourceModel) toListParams(_ context.Context) (params dacker
 	params = dackermanstore.ProductListParams{}
 
 	if !m.OrgID.IsNull() {
-		params.OrgID = dackermanstore.F(m.OrgID.ValueString())
+		params.OrgID = param.NewOpt(m.OrgID.ValueString())
 	}
 
 	return
