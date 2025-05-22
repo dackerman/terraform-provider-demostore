@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.1.0 (2025-05-22)
+
+Full Changelog: [v1.0.0...v1.1.0](https://github.com/dackerman/terraform-provider-demostore/compare/v1.0.0...v1.1.0)
+
+### Features
+
+* **api:** update via SDK Studio ([a4adc1e](https://github.com/dackerman/terraform-provider-demostore/commit/a4adc1e516f46745b1b7cd3cae2bf4209332ba2a))
+* **api:** update via SDK Studio ([4854ae6](https://github.com/dackerman/terraform-provider-demostore/commit/4854ae6f83ccde1ed3d8733b7532eb7fdb93225d))
+
+
+### Bug Fixes
+
+* **build:** enable building against private Go production repos ([937c4be](https://github.com/dackerman/terraform-provider-demostore/commit/937c4be7404f73fcf4e681858b4ac01a00094971))
+
+
+### Chores
+
+* **docs:** grammar improvements ([aa23051](https://github.com/dackerman/terraform-provider-demostore/commit/aa230511b7d9f1ddb41d4a14cf5a2156d3db92e8))
+
 ## 1.0.0 (2025-05-16)
 
 Full Changelog: [v0.4.0...v1.0.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.4.0...v1.0.0)
