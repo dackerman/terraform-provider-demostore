@@ -6,8 +6,8 @@ import (
 	"context"
 	"os"
 
-	"github.com/dackerman/demostore-go/v2"
-	"github.com/dackerman/demostore-go/v2/option"
+	"github.com/dackerman/demostore-private-go/v2"
+	"github.com/dackerman/demostore-private-go/v2/option"
 	"github.com/dackerman/terraform-provider-demostore/internal/services/product"
 	"github.com/dackerman/terraform-provider-demostore/internal/services/product_variant"
 	"github.com/hashicorp/terraform-plugin-framework/datasource"
@@ -44,7 +44,7 @@ func ProviderSchema(ctx context.Context) schema.Schema {
 	return schema.Schema{
 		Attributes: map[string]schema.Attribute{
 			"base_url": schema.StringAttribute{
-				Description: "Set the base url that the provider connects to. This can be used for testing in other environments.",
+				Description: "Set the base url that the provider connects to.",
 				Optional:    true,
 			},
 			"auth_token": schema.StringAttribute{
