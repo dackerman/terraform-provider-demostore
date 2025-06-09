@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.1.0 (2025-06-09)
+
+Full Changelog: [v1.0.0...v1.1.0](https://github.com/dackerman/terraform-provider-demostore/compare/v1.0.0...v1.1.0)
+
+### Features
+
+* **api:** update via SDK Studio ([793598b](https://github.com/dackerman/terraform-provider-demostore/commit/793598b3dfa8ad9e17c603ffe7da96a98efdc236))
+* **api:** update via SDK Studio ([a4adc1e](https://github.com/dackerman/terraform-provider-demostore/commit/a4adc1e516f46745b1b7cd3cae2bf4209332ba2a))
+* **api:** update via SDK Studio ([4854ae6](https://github.com/dackerman/terraform-provider-demostore/commit/4854ae6f83ccde1ed3d8733b7532eb7fdb93225d))
+* **client:** support environments property from Stainless config ([9cb4aac](https://github.com/dackerman/terraform-provider-demostore/commit/9cb4aac41f4a4c30390cb9cc8ab42ce1d488802d))
+
+
+### Bug Fixes
+
+* **build:** enable building against private Go production repos ([937c4be](https://github.com/dackerman/terraform-provider-demostore/commit/937c4be7404f73fcf4e681858b4ac01a00094971))
+
+
+### Chores
+
+* bump deps to avoid GetResourceIdentitySchemas errors for Terraform CLI v1.12+ ([c008462](https://github.com/dackerman/terraform-provider-demostore/commit/c008462acb9b9933d8cedd47c54472b14be9303f))
+* **docs:** grammar improvements ([aa23051](https://github.com/dackerman/terraform-provider-demostore/commit/aa230511b7d9f1ddb41d4a14cf5a2156d3db92e8))
+
 ## 1.0.0 (2025-05-16)
 
 Full Changelog: [v0.4.0...v1.0.0](https://github.com/dackerman/terraform-provider-demostore/compare/v0.4.0...v1.0.0)
