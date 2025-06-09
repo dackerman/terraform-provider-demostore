@@ -6,7 +6,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/dackerman/demostore-private-go/v2"
+	"github.com/dackerman/demostore-go/v2"
 	"github.com/dackerman/terraform-provider-demostore/internal/apijson"
 	"github.com/dackerman/terraform-provider-demostore/internal/customfield"
 	"github.com/hashicorp/terraform-plugin-framework/attr"

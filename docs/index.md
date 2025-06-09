@@ -25,5 +25,5 @@ provider "demostore" {
 ### Optional
 
 - `auth_token` (String)
-- `base_url` (String) Set the base url that the provider connects to. This can be used for testing in other environments.
+- `base_url` (String) Set the base url that the provider connects to.
 - `org_id` (String)
