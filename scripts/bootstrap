@@ -13,8 +13,8 @@ fi
 echo "==> Installing Go dependencies…"
 
 # Set GOPRIVATE if the repository appears to be private
-REPO_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://github.com/dackerman/demostore-private-go)
+REPO_STATUS=$(curl -s -o /dev/null -w "%{http_code}" https://github.com/dackerman/demostore-go)
 if [ "$REPO_STATUS" = "404" ]; then
-  export GOPRIVATE=github.com/dackerman/demostore-private-go
+  export GOPRIVATE=github.com/dackerman/demostore-go
 fi
 go mod tidy -e || true

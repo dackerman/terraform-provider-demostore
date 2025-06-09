@@ -5,8 +5,8 @@ package product
 import (
 	"context"
 
-	"github.com/dackerman/demostore-private-go/v2"
-	"github.com/dackerman/demostore-private-go/v2/packages/param"
+	"github.com/dackerman/demostore-go/v2"
+	"github.com/dackerman/demostore-go/v2/packages/param"
 	"github.com/hashicorp/terraform-plugin-framework/diag"
 	"github.com/hashicorp/terraform-plugin-framework/types"
 )
