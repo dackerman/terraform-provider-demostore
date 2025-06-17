@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.1 (2025-06-17)
+
+Full Changelog: [v1.1.0...v1.1.1](https://github.com/dackerman/terraform-provider-demostore/compare/v1.1.0...v1.1.1)
+
+### Chores
+
+* **ci:** enable for pull requests ([2b69c44](https://github.com/dackerman/terraform-provider-demostore/commit/2b69c44248e809a7ad0404497381b7c30db45563))
+
 ## 1.1.0 (2025-06-09)
 
 Full Changelog: [v1.0.0...v1.1.0](https://github.com/dackerman/terraform-provider-demostore/compare/v1.0.0...v1.1.0)
