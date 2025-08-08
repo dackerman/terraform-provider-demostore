@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.2.0 (2025-08-08)
+
+Full Changelog: [v1.1.0...v1.2.0](https://github.com/dackerman/terraform-provider-demostore/compare/v1.1.0...v1.2.0)
+
+### Features
+
+* new option to send computed values back to server ([5b8a3c8](https://github.com/dackerman/terraform-provider-demostore/commit/5b8a3c8486d69ff334a501adfcaff7b4c5a06f63))
+
+
+### Bug Fixes
+
+* **api:** handle mismatched dynamic array types in state and plan during serialization ([a7bccd0](https://github.com/dackerman/terraform-provider-demostore/commit/a7bccd0feece444d8deddd20b6bf34ce361e9079))
+* **ci:** release-doctor — report correct token name ([1d7db26](https://github.com/dackerman/terraform-provider-demostore/commit/1d7db26170b9f6535cc2af1b94b0ba69ee155983))
+* null nested attribute decoding ([e88b48c](https://github.com/dackerman/terraform-provider-demostore/commit/e88b48ca675d3538a669b9c0abf017c991ec940a))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([2b69c44](https://github.com/dackerman/terraform-provider-demostore/commit/2b69c44248e809a7ad0404497381b7c30db45563))
+* **ci:** only run for pushes and fork pull requests ([29f2ba2](https://github.com/dackerman/terraform-provider-demostore/commit/29f2ba2a33ceeb2ce7a4bd2bc868a42447d6cc8f))
+* **internal:** upgrade cloudflare/circl ([3550a68](https://github.com/dackerman/terraform-provider-demostore/commit/3550a6846260f6a1718421ff433c9fd21e3203b4))
+
 ## 1.1.0 (2025-06-09)
 
 Full Changelog: [v1.0.0...v1.1.0](https://github.com/dackerman/terraform-provider-demostore/compare/v1.0.0...v1.1.0)
